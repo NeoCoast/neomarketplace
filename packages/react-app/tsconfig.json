@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "baseUrl": "./src/",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -17,10 +18,14 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "downlevelIteration": true
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "src/components",
+    "custom.d.ts",
+    "tests"
+  ],
 }
