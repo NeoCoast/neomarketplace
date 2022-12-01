@@ -5,7 +5,7 @@
 
   &_header {
     background-color: $main_blue;
-    height: 70px;
+    height: 90px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,13 +18,13 @@
       align-items: center;
       justify-content: space-between;
       margin-left: 20px;
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 300;
     }
 
     &_isotype {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       margin-right: 10px;
       margin-left: 15px;
     }
@@ -47,11 +47,12 @@
       font-weight: 400;
 
       &_item {
-        font-size: 14px;
+        font-size: 16px;
         margin-left: 40px;
 
         &:hover {
-          text-shadow: 2px 1px 2px $disabled;
+          border-bottom: 1px solid $white;
+          margin-top: 1px;
         }
       }
     }
@@ -62,14 +63,14 @@
       align-items: center;
       justify-content: space-between;
       margin: 0 20px;
-      font-size: 14px;
+      font-size: 16px;
       font-weight: 500;
       position: relative;
 
       &_avatar {
-        width: 30px;
-        height: 30px;
-        margin-right: 5px;
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
       }
 
       &_arrow {
