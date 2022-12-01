@@ -1,14 +1,87 @@
+@import "../../constants/colors.scss";
+
 .layout {
   text-align: center;
 
   &_header {
-    background-color: #282c34;
-    min-height: 100vh;
+    background-color: $main_blue;
+    height: 70px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
+    justify-content: space-between;
     color: white;
+
+    &_logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: 20px;
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    &_isotype {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      margin-left: 15px;
+    }
+
+    &_right {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin-right: 20px;
+      width: 550px;
+    }
+
+    &_menu {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 20px;
+      font-weight: 400;
+
+      &_item {
+        font-size: 14px;
+        margin-left: 40px;
+
+        &:hover {
+          text-shadow: 2px 1px 2px $disabled;
+        }
+      }
+    }
+
+    &_user {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0 20px;
+      font-size: 14px;
+      font-weight: 500;
+      position: relative;
+
+      &_avatar {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+      }
+
+      &_arrow {
+        width: 10px;
+        height: 10px;
+        transition: all 0.4s;
+        margin-left: 10px;
+
+        &-down {
+          transform: rotate(180deg);
+        }
+      }
+    }
   }
 }

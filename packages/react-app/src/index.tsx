@@ -1,11 +1,14 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-  createBrowserRouter,
-  RouterProvider,
+  Routes,
+  Route,
+  BrowserRouter,
 } from 'react-router-dom';
 
-import App from 'containers/Home';
+import routes from 'constants/routes';
+
+import Home from 'containers/Home';
 import Layout from 'containers/Layout';
 
 import './index.scss';
@@ -14,17 +17,12 @@ const root = createRoot(
   document.getElementById('root') as HTMLElement,
 );
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-  },
-]);
-
 root.render(
-  <StrictMode>
-    <Layout>
-      <RouterProvider router={router} />
-    </Layout>
-  </StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path={routes.home} element={<Layout />}>
+        <Route index element={<Home />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>,
 );
