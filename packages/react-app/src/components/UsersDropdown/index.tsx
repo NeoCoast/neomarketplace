@@ -18,7 +18,7 @@ const UsersDropdown = ({ isOpen, setIsOpen = () => {} } : DropdownProps) => {
 
   return (
     <div className={cn('dropdown', { 'dropdown-active': isOpen })}>
-      <ul className="dropdown_list">
+      <div className="dropdown_list">
         {usersMock.map(({ name, avatar }, index) => (
           <button
             onClick={() => setIsOpen(false)} // TO DO: Add logic for change user using redux
@@ -28,7 +28,7 @@ const UsersDropdown = ({ isOpen, setIsOpen = () => {} } : DropdownProps) => {
             {name}
           </button>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

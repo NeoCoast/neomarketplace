@@ -2,11 +2,11 @@ import React, { ReactElement, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 
+import UsersDropdown from 'components/UsersDropdown';
+
 import Arrow from 'assets/Arrow.svg';
 import NeoMarketplace from 'assets/NeoMarketplace.svg';
 import DefaultUser from 'assets/DefaultUser.png';
-
-import UsersDropdown from 'components/UsersDropdown';
 
 import './styles.scss';
 
