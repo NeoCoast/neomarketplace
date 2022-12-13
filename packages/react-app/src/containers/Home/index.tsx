@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 
-import ProductList from '../../components/ProductList';
+import ProductList from 'components/ProductList';
 
-import products from '../../data/mockedData';
+import products from 'data/mockedData';
 
 import './styles.scss';
 
@@ -42,7 +42,7 @@ const Home = () => {
     );
   }
 
-  if (products.length === 0) { // ToDo: Add empty state.
+  if (!items.length) { // ToDo: Add empty state.
     return (
       <div>
         No products available.
