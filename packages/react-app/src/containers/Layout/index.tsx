@@ -1,10 +1,9 @@
 import React, {
-  ReactElement,
   useState,
   useContext,
   useEffect,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Outlet } from 'react-router-dom';
 import cn from 'classnames';
 
 import UsersDropdown from 'components/UsersDropdown';
@@ -16,11 +15,7 @@ import UserContext, { userType } from 'context';
 
 import './styles.scss';
 
-type LayoutProps = {
-  children?: ReactElement | null,
-}
-
-const Layout = ({ children } : LayoutProps) => {
+const Layout = () => {
   const [isOpenUserMenu, setIsOpenUserMenu] = useState(false);
   const [usersList, setUsersList] = useState<userType[]>([]);
 
@@ -87,7 +82,8 @@ const Layout = ({ children } : LayoutProps) => {
           </div>
         </div>
       </header>
-      {children}
+
+      <Outlet />
     </div>
   );
 };
