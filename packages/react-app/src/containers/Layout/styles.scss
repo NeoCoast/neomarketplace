@@ -57,6 +57,10 @@
       }
     }
 
+    &_user-container {
+      position: relative;
+    }
+
     &_user {
       display: flex;
       flex-direction: row;
@@ -65,12 +69,12 @@
       margin: 0 20px;
       font-size: 16px;
       font-weight: 500;
-      position: relative;
 
       &_avatar {
         width: 35px;
         height: 35px;
         margin-right: 10px;
+        border-radius: 50%;
       }
 
       &_arrow {

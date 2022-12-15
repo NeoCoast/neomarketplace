@@ -1,4 +1,9 @@
-import React, { ReactElement, useState } from 'react';
+import React, {
+  ReactElement,
+  useState,
+  useContext,
+  useEffect,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -6,7 +11,8 @@ import UsersDropdown from 'components/UsersDropdown';
 
 import Arrow from 'assets/Arrow.svg';
 import NeoMarketplace from 'assets/NeoMarketplace.svg';
-import DefaultUser from 'assets/DefaultUser.png';
+
+import UserContext, { userType } from 'context';
 
 import './styles.scss';
 
@@ -16,8 +22,32 @@ type LayoutProps = {
 
 const Layout = ({ children } : LayoutProps) => {
   const [isOpenUserMenu, setIsOpenUserMenu] = useState(false);
+  const [usersList, setUsersList] = useState<userType[]>([]);
 
   const navigate = useNavigate();
+  const { selectedUser } = useContext(UserContext);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setUsersList([
+        {
+          id: 1,
+          name: 'User Name 1',
+          picture: 'https://i.pravatar.cc/150?img=1',
+        },
+        {
+          id: 2,
+          name: 'User Name 2',
+          picture: 'https://i.pravatar.cc/150?img=2',
+        },
+        {
+          id: 3,
+          name: 'User Name 3',
+          picture: 'https://i.pravatar.cc/150?img=3',
+        },
+      ]);
+    }, 1000); // TO DO: real backend request
+  }, []);
 
   return (
     <div className="layout">
@@ -39,16 +69,22 @@ const Layout = ({ children } : LayoutProps) => {
               MY PURCHASED
             </button>
           </div>
-          <button onClick={() => setIsOpenUserMenu(!isOpenUserMenu)} className="layout_header_user">
-            <img src={DefaultUser} alt="User Avatar" className="layout_header_user_avatar" />
-            User Name 1
-            <img
-              src={Arrow}
-              className={cn('layout_header_user_arrow', { 'layout_header_user_arrow-down': !isOpenUserMenu })}
-              alt="User menu arrow"
+          <div className="layout_header_user-container">
+            <button onClick={() => setIsOpenUserMenu(!isOpenUserMenu)} className="layout_header_user">
+              <img src={selectedUser?.picture} alt="User Avatar" className="layout_header_user_avatar" />
+              {selectedUser?.name}
+              <img
+                src={Arrow}
+                className={cn('layout_header_user_arrow', { 'layout_header_user_arrow-down': !isOpenUserMenu })}
+                alt="User menu arrow"
+              />
+            </button>
+            <UsersDropdown
+              isOpen={isOpenUserMenu}
+              setIsOpen={setIsOpenUserMenu}
+              usersList={usersList}
             />
-            <UsersDropdown isOpen={isOpenUserMenu} />
-          </button>
+          </div>
         </div>
       </header>
       {children}
