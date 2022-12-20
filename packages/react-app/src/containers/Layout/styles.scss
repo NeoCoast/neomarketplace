@@ -3,7 +3,7 @@
 .layout {
   text-align: center;
 
-  &_header {
+  &__header {
     background-color: $main_blue;
     height: 80px;
     display: flex;
@@ -12,7 +12,7 @@
     justify-content: space-between;
     color: white;
 
-    &_logo {
+    &__logo {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -22,14 +22,14 @@
       font-weight: 300;
     }
 
-    &_isotype {
+    &__isotype {
       width: 60px;
       height: 60px;
       margin-right: 10px;
       margin-left: 15px;
     }
 
-    &_right {
+    &__right {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -38,7 +38,7 @@
       width: 550px;
     }
 
-    &_menu {
+    &__menu {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -46,7 +46,7 @@
       font-size: 20px;
       font-weight: 400;
 
-      &_item {
+      &__item {
         font-size: 16px;
         margin-left: 40px;
 
@@ -57,11 +57,11 @@
       }
     }
 
-    &_user-container {
+    &__user-container {
       position: relative;
     }
 
-    &_user {
+    &__user {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -70,20 +70,20 @@
       font-size: 16px;
       font-weight: 500;
 
-      &_avatar {
+      &__avatar {
         width: 35px;
         height: 35px;
         margin-right: 10px;
         border-radius: 50%;
       }
 
-      &_arrow {
+      &__arrow {
         width: 10px;
         height: 10px;
         transition: all 0.4s;
         margin-left: 10px;
 
-        &-down {
+        &--down {
           transform: rotate(180deg);
         }
       }

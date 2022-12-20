@@ -15,8 +15,8 @@ const UsersDropdown = ({ isOpen, setIsOpen, usersList } : DropdownProps) => {
   const { setSelectedUser, selectedUser } = useContext(UserContext);
 
   return (
-    <div className={cn('dropdown', { 'dropdown-active': isOpen })}>
-      <div className="dropdown_list">
+    <div className={cn('dropdown', { 'dropdown--active': isOpen })}>
+      <div className="dropdown__list">
         {usersList.filter(({ id }) => id !== selectedUser.id)
           .map(({ name, picture, id }, index) => (
             <button
@@ -30,12 +30,12 @@ const UsersDropdown = ({ isOpen, setIsOpen, usersList } : DropdownProps) => {
                   picture,
                 }), 200);
               }}
-              className={cn('dropdown_user', { 'dropdown_user-border': index !== usersList.length - 1 })}
+              className={cn('dropdown__user', { 'dropdown__user--border': index !== usersList.length - 1 })}
             >
               <img
                 src={picture}
                 alt="User Avatar"
-                className="dropdown_user_avatar"
+                className="dropdown__user__avatar"
               />
               {name}
             </button>

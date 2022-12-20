@@ -51,31 +51,31 @@ const Layout = ({ children } : LayoutProps) => {
 
   return (
     <div className="layout">
-      <header className="layout_header">
-        <button className="layout_header_logo" onClick={() => navigate('/')}>
-          <img className="layout_header_isotype" src={NeoMarketplace} alt="App Logo" />
+      <header className="layout__header">
+        <button className="layout__header__logo" onClick={() => navigate('/')}>
+          <img className="layout__header__isotype" src={NeoMarketplace} alt="App Logo" />
           <p>
             NeoMarketplace
           </p>
         </button>
-        <div className="layout_header_right">
-          <div className="layout_header_menu">
-            <button className="layout_header_menu_item" onClick={() => navigate('/')}>
+        <div className="layout__header__right">
+          <div className="layout__header__menu">
+            <button className="layout__header__menu__item" onClick={() => navigate('/')}>
               {/* TO DO: Add link My listing screen */}
               MY LISTING
             </button>
-            <button className="layout_header_menu_item" onClick={() => navigate('/')}>
+            <button className="layout__header__menu__item" onClick={() => navigate('/')}>
               {/* TO DO: Add link My purchased screen */}
               MY PURCHASED
             </button>
           </div>
-          <div className="layout_header_user-container">
-            <button onClick={() => setIsOpenUserMenu(!isOpenUserMenu)} className="layout_header_user">
-              <img src={selectedUser?.picture} alt="User Avatar" className="layout_header_user_avatar" />
+          <div className="layout__header__user-container">
+            <button onClick={() => setIsOpenUserMenu(!isOpenUserMenu)} className="layout__header__user">
+              <img src={selectedUser?.picture} alt="User Avatar" className="layout__header__user__avatar" />
               {selectedUser?.name}
               <img
                 src={Arrow}
-                className={cn('layout_header_user_arrow', { 'layout_header_user_arrow-down': !isOpenUserMenu })}
+                className={cn('layout__header__user__arrow', { 'layout__header__user__arrow--down': !isOpenUserMenu })}
                 alt="User menu arrow"
               />
             </button>
