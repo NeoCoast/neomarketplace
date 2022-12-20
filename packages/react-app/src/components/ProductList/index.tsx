@@ -5,11 +5,12 @@ import ProductItem from '../ProductItem';
 import './styles.scss';
 
 interface Product {
+  id: number,
   name: string,
   image: string,
   msgsCount: number,
   price: number,
-  publicationDate: Date | string | number,
+  publicationDate: string,
   seller: string,
 }
 
@@ -21,7 +22,7 @@ const ProductList = ({ products = [] } : ProductListProps) => (
   <div className="product-list">
     {
       products.map((product) => (
-        <ProductItem {...product} />
+        <ProductItem {...product} key={product.id} />
       ))
     }
   </div>

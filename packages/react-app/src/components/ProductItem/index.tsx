@@ -2,6 +2,7 @@ import React from 'react';
 import { format }  from 'date-fns';
 
 import MessagesIcon from 'assets/Msgs.svg';
+import DefaultUser from 'assets/DefaultUser.png';
 
 import './styles.scss';
 
@@ -10,7 +11,7 @@ type ProductItemProps = {
   image: string,
   msgsCount: number,
   price: number,
-  publicationDate: Date | string | number,
+  publicationDate: string,
   seller: string,
 }
 
@@ -38,7 +39,10 @@ const ProductItem = ({
       </div>
       <div className="product-item__divider" />
       <div className="product-item__seller-container">
-        <span className="product-item__seller-name">{seller}</span>
+        <div className="product-item__avatar-container">
+          <img src={DefaultUser} alt="User Avatar" className="product-item__avatar" />
+          <span className="product-item__seller-name">{seller}</span>
+        </div>
         <div className="product-item__msgs-container">
           <img
             src={MessagesIcon}
