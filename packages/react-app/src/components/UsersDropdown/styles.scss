@@ -11,22 +11,22 @@
   width: calc(100% + 20px);
   left: -15px;
   transition: ease height .3s;
-  top: 40px;
+  top: 47px;
   border-radius: 0 0 8px 8px;
   box-shadow: 0 5px 20px $shadow;
   background-color: $white;
 
-  &-active {
+  &--active {
     height: 100px;
     transition: ease height .3s;
   }
 
-  &_list {
+  &__list {
     list-style: none;
     width: 100%;
   }
 
-  &_user {
+  &__user {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -38,13 +38,14 @@
     width: 100%;
     padding: 0 20px 0 17px;
 
-    &_avatar {
+    &__avatar {
       width: 30px;
       height: 30px;
       margin-right: 13px;
+      border-radius: 50%;
     }
 
-    &-border {
+    &--border {
       border-bottom: 1px solid $light_gray;
     }
   }

@@ -1,33 +1,45 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import cn from 'classnames';
 
-import DefaultUser from 'assets/DefaultUser.png';
+import UserContext, { userType } from 'context';
 
 import './styles.scss';
 
 type DropdownProps = {
-  isOpen?: boolean,
-  setIsOpen?: (param: boolean) => void,
+  isOpen: boolean,
+  setIsOpen: (param: boolean) => void,
+  usersList: userType[],
 }
 
-const UsersDropdown = ({ isOpen, setIsOpen = () => {} } : DropdownProps) => {
-  const usersMock = [
-    { name: 'User Name 2', avatar: DefaultUser },
-    { name: 'User Name 3', avatar: DefaultUser },
-  ];
+const UsersDropdown = ({ isOpen, setIsOpen, usersList } : DropdownProps) => {
+  const { setSelectedUser, selectedUser } = useContext(UserContext);
 
   return (
-    <div className={cn('dropdown', { 'dropdown-active': isOpen })}>
-      <div className="dropdown_list">
-        {usersMock.map(({ name, avatar }, index) => (
-          <button
-            onClick={() => setIsOpen(false)} // TO DO: Add logic for change user using redux
-            className={cn('dropdown_user', { 'dropdown_user-border': index !== usersMock.length - 1 })}
-          >
-            <img src={avatar} alt="User Avatar" className="dropdown_user_avatar" />
-            {name}
-          </button>
-        ))}
+    <div className={cn('dropdown', { 'dropdown--active': isOpen })}>
+      <div className="dropdown__list">
+        {usersList.filter(({ id }) => id !== selectedUser.id)
+          .map(({ name, picture, id }, index) => (
+            <button
+              key={id}
+              onClick={() => {
+                setIsOpen(false);
+
+                setTimeout(() => setSelectedUser({
+                  id,
+                  name,
+                  picture,
+                }), 200);
+              }}
+              className={cn('dropdown__user', { 'dropdown__user--border': index !== usersList.length - 1 })}
+            >
+              <img
+                src={picture}
+                alt="User Avatar"
+                className="dropdown__user__avatar"
+              />
+              {name}
+            </button>
+          ))}
       </div>
     </div>
   );
