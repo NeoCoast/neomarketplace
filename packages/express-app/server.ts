@@ -1,4 +1,7 @@
 import express from 'express';
+import * as trpcExpress from '@trpc/server/adapters/express';
+
+import { appRouter } from './routers/app';
 
 const app = express();
 const port = 3001;
@@ -11,6 +14,19 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+const createContext = ({
+  req,
+  res,
+}: trpcExpress.CreateExpressContextOptions) => ({}) // no context
+
+app.use(
+  '/trpc',
+  trpcExpress.createExpressMiddleware({
+    router: appRouter,
+    createContext,
+  })
+);
 
 app.get("/", (req, res) => {
   res.json({ foo: "bar" });
