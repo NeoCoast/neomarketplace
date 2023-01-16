@@ -59,8 +59,7 @@ const Layout = () => {
               {/* TO DO: Add link My listing screen */}
               MY LISTING
             </button>
-            <button className="layout__header__menu__item" onClick={() => navigate('/')}>
-              {/* TO DO: Add link My purchased screen */}
+            <button className="layout_header_menu_item" onClick={() => navigate('/my-purchased')}>
               MY PURCHASED
             </button>
           </div>
