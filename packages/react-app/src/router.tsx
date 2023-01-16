@@ -11,6 +11,7 @@ import routes from 'constants/routes';
 
 import Home from 'containers/Home';
 import MyPurchased from 'containers/MyPurchased';
+import MyListing from 'containers/MyListing';
 import Layout from 'containers/Layout';
 
 import './index.scss';
@@ -42,6 +43,7 @@ const Router = () => {
           <Route path={routes.home} element={<Layout />}>
             <Route index element={<Home />} />
             <Route path={routes.myPurchased} element={<MyPurchased />} />
+            <Route path={routes.myListing} element={<MyListing />} />
           </Route>
         </Routes>
       </UserContext.Provider>

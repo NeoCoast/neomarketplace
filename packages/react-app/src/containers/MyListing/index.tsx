@@ -19,7 +19,7 @@ type Product = {
   sold: boolean,
 }
 
-const MyPurchased = () => {
+const MyListing = () => {
   const [loadingItems, setLoadingItems] = useState(false);
   const [items, setItems] = useState<Product[]>([]);
 
@@ -45,17 +45,17 @@ const MyPurchased = () => {
   }
 
   return (
-    <div className="my-purchased">
+    <div className="my-listing">
       <div>
-        <div className="my-purchased__title-container">
-          <img src={TitleImage} alt="My Purchased" className="my-purchased__title-img" />
-          <span className="my-purchased__title">My Purchased</span>
+        <div className="my-listing__title-container">
+          <img src={TitleImage} alt="My Listing" className="my-listing__title-img" />
+          <span className="my-listing__title">My Listing</span>
         </div>
 
         {
           items.length === 0 ? (
             <div>
-              No products purchased yet.
+              No products added on my listing yet.
             </div>
           ) : (
             <ProductList products={items} />
@@ -66,4 +66,4 @@ const MyPurchased = () => {
   );
 };
 
-export default MyPurchased;
+export default MyListing;

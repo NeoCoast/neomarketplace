@@ -12,6 +12,7 @@ interface Product {
   price: number,
   publicationDate: string,
   seller: string,
+  sold: boolean,
 }
 
 type ProductListProps = {
