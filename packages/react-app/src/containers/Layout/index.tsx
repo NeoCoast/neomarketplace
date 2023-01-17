@@ -81,7 +81,6 @@ const Layout = () => {
           </div>
         </div>
       </header>
-
       <Outlet />
     </div>
   );

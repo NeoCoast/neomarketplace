@@ -1,0 +1,84 @@
+@import "../../constants/colors.scss";
+
+.product-form {
+  margin: 10%;
+  display: flex;
+  flex-direction: row;
+
+  &__image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+  }
+  
+  form {
+    position: absolute;
+    left: calc(50% + 195px);
+    top: calc(50% - 18px);
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 10px;
+    margin: 16px 218px 16px 0;
+    width: 550px;
+    height: 658px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+  
+  &__input-value-container {
+    display: flex;
+    float: left;
+    flex-direction: column;
+    margin-left: 10%;
+    width: 80%;
+    
+    input, textarea {
+      padding: 10px 30px 10px  10px;
+      outline: 0;
+      resize: none;
+      font-family: 'Inter';
+    }
+    
+    p {
+      text-align: left;
+    }
+    
+  }
+
+  &__preview-image {
+    aspect-ratio:initial;
+    max-height: 50px;
+    max-width: 50px;
+  }
+
+  &__preview-image-zoom {
+    max-height: 450px;
+    max-width: 450px;
+  }
+
+  &__input-image {
+    border: 1px solid #8A8A8A;
+    border-radius: 4px;
+    margin: 10px 0;
+    background-color: #DFDFDF;
+  }
+
+  button {
+    align-self: flex-end;
+    border-radius: 4px;
+    padding: 10px 20px;
+    background-color: #1276D2;
+    margin: 15px;
+  }
+
+  .button__disabled {
+    color: #8A8A8A;
+    background-color: #DFDFDF;
+  }
+}
