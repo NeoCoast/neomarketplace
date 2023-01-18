@@ -1,7 +1,6 @@
 import React, {
   useState,
   useContext,
-  useEffect,
 } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 import cn from 'classnames';
@@ -11,38 +10,15 @@ import UsersDropdown from 'components/UsersDropdown';
 import Arrow from 'assets/Arrow.svg';
 import NeoMarketplace from 'assets/NeoMarketplace.svg';
 
-import UserContext, { userType } from 'context';
+import UserContext from 'context';
 
 import './styles.scss';
 
 const Layout = () => {
   const [isOpenUserMenu, setIsOpenUserMenu] = useState(false);
-  const [usersList, setUsersList] = useState<userType[]>([]);
 
   const navigate = useNavigate();
-  const { selectedUser } = useContext(UserContext);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setUsersList([
-        {
-          id: 1,
-          name: 'User Name 1',
-          picture: 'https://i.pravatar.cc/150?img=1',
-        },
-        {
-          id: 2,
-          name: 'User Name 2',
-          picture: 'https://i.pravatar.cc/150?img=2',
-        },
-        {
-          id: 3,
-          name: 'User Name 3',
-          picture: 'https://i.pravatar.cc/150?img=3',
-        },
-      ]);
-    }, 1000); // TO DO: real backend request
-  }, []);
+  const { selectedUser, usersList } = useContext(UserContext);
 
   return (
     <div className="layout">

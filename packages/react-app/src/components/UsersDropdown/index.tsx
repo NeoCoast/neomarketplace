@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import cn from 'classnames';
 
-import UserContext, { userType } from 'context';
+import UserContext from 'context';
+import { UserType } from 'types/user';
 
 import './styles.scss';
 
 type DropdownProps = {
   isOpen: boolean,
   setIsOpen: (param: boolean) => void,
-  usersList: userType[],
+  usersList: UserType[],
 }
 
 const UsersDropdown = ({ isOpen, setIsOpen, usersList } : DropdownProps) => {
