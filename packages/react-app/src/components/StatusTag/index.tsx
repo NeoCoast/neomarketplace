@@ -5,19 +5,16 @@ import './styles.scss';
 
 type StatusTagProps = {
   text: string,
-  isGreen?: boolean,
-  isBig?: boolean,
+  isListing?: boolean,
 }
 
 const StatusTag = ({
   text,
-  isGreen = false,
-  isBig = false,
+  isListing = false,
 } : StatusTagProps) => (
   <div
     className={cn('tag', {
-      'tag--green': isGreen,
-      'tag--big': isBig,
+      'tag--listing': isListing,
     })}
   >
     <p className="tag__text">{text}</p>

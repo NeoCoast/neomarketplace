@@ -9,7 +9,7 @@
   margin: auto;
   margin-top: 30px;
   height: 80vh;
-  padding: 10px 45px;
+  padding: 30px 45px;
   box-sizing: border-box;
   background-color: $white;
   border-radius: 10px;
@@ -22,6 +22,8 @@
     justify-content: space-between;
     position: relative;
     color: $secondary;
+    align-items: center;
+    height: 47px;
 
     &__text {
       font-size: 24px;
@@ -74,11 +76,20 @@
     }
 
     &__description {
-      display: flex;
       color: $dark_gray;
       line-height: 25px;
+      max-height: 25vh;
+      min-height: 10vh;
       font-size: 14px;
       font-weight: 400;
+      overflow-y: scroll;
+      white-space: pre-line;
+      padding-bottom: 25px;
+      mask-image: linear-gradient(to bottom, $black calc(100% - 40px), transparent);
+
+      &::-webkit-scrollbar {
+        width: 0;
+      }
     }
 
     &__info {
@@ -108,6 +119,7 @@
         font-size: 34px;
         font-weight: 600;
         color: $secondary;
+        margin: 20px 0;
       }
 
       &__date {

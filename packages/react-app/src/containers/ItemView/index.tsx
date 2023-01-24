@@ -38,12 +38,11 @@ const ItemView = () => {
         setItem({ // TO DO: real backend request
           id: 1,
           name: '92 ALLIUM PLACE, ORLANDO FL 32827',
-          description: 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... .',
+          description: 'Vestibulum ante ipsum primis in faucibus orci \nluctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsu',
           price: 100,
           image: 'https://educacion30.b-cdn.net/wp-content/uploads/2019/02/girasoles-978x652.jpg',
           seller: 2,
           publicationDate: '2021-01-01',
-          buyer: 1,
         });
       } catch {
         setError('Something went wrong getting item data');
@@ -68,7 +67,7 @@ const ItemView = () => {
           <div className="item-box__title">
             <p className="item-box__title__text">{item?.name}</p>
             {isSold && !isOwner ? (
-              <StatusTag isBig text="Sold" />
+              <StatusTag text="Sold" />
             ) : (
               <CustomButton
                 text={isOwner ? 'Edit' : 'Purchase Item'}
@@ -87,7 +86,9 @@ const ItemView = () => {
               </div>
               <div className="item-box__content__main">
                 <p className="item-box__content__title">{item?.name}</p>
-                <p className="item-box__content__description">{item?.description}</p>
+                <div className="item-box__content__description">
+                  {item?.description}
+                </div>
               </div>
               <div className="item-box__content__details">
                 <p className="item-box__content__details__price">{item?.price.toLocaleString('en-US', {

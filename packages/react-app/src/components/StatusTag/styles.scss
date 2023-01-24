@@ -1,1 +1,25 @@
 @import "../../constants/colors.scss";
+
+.tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -30px;
+  right: -45px;
+  background: $medium_gray;
+  opacity: 0.8;
+  height: 7vh;
+  width: 25vh;
+  border-top-right-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: -3px 3px 4px $shadow;
+
+  &__text {
+    font-size: 3vh;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: $white;
+  }
+}
