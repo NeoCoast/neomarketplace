@@ -1,0 +1,125 @@
+@import "../../constants/colors.scss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+.product-item {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  min-width: 100%;
+  max-width: 1325px;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    min-width: 22%;
+    width: 22%;
+    max-width: 424px;
+    margin: 25px 1.5% 0 1.5%;
+    border-radius: 8px;
+    box-shadow: 10px 10px 40px rgba(74, 96, 161, 0.2);
+    font-family: 'Inter', sans-serif;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .09);
+      transform: translateY(-0.5rem);
+      cursor: pointer;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: 8px;
+    max-height: 250px;
+  }
+
+  &__body {
+    display: flex;
+    padding: 28px;
+    flex-direction: column;
+  }
+
+  &__divider {
+    margin-top: 16px;
+    border: 1.07071px solid #E7E9EB;
+  }
+
+  &__date {
+    color: #6D737A;
+    font: {
+      size: 18px;
+      weight: 500;
+    }
+  }
+
+  &__price {
+    color: #4A60A1;
+    font: {
+      size: 20px;
+      font-weight: 600;
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+  }
+
+  &__name {
+    display: flex;
+    color: #363A3D;
+    font: {
+      size: 22px;
+      weight: 500;
+    }
+    line-height: 30px;
+    text-align: left;
+  }
+
+  &__msgs {
+    &-container {
+      align-items: center;
+      display: flex;
+    }
+
+    &-count {
+      margin-left: 6px;
+      color: #6D737A;
+      font: {
+        size: 16px;
+        weight: 500;
+      }
+    }
+  }
+
+  &__avatar {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+
+    &-container {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__seller {
+    &-container {
+      display: flex;
+      padding-top: 28px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &-name {
+      color: #363A3D;
+      font: {
+        weight: 500;
+        size: 20px;
+      }
+    }
+  }
+}
