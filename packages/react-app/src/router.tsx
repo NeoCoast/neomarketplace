@@ -13,7 +13,7 @@ import Home from 'containers/Home';
 import MyPurchased from 'containers/MyPurchased';
 import MyListing from 'containers/MyListing';
 import Layout from 'containers/Layout';
-import NewProduct from 'pages/NewProduct';
+import NewProduct from 'containers/NewProduct';
 
 import './index.scss';
 

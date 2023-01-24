@@ -12,9 +12,7 @@ const NewProduct = () => {
   };
 
   return (
-    <div>
-      <ProductForm handleSuccess={handleSuccess} />
-    </div>
+    <ProductForm handleSuccess={handleSuccess} />
   );
 };
 export default NewProduct;

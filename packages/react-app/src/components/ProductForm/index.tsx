@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import cn from 'classnames';
 
 import backgroundImage from 'assets/ProductFormBackImage.png';
 
@@ -73,9 +74,9 @@ const ProductForm = ({ product = {}, isEdit = false, handleSuccess } : ProductFo
 
   const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.length) {
-      const file = event?.target?.files[0];
+      const file = event.target.files[0];
       const b64File = await convertBase64(file);
-      setProductImage({ name: file.name, image: b64File as string });
+      setProductImage({ name: file?.name, image: b64File as string });
     }
   };
 
@@ -116,13 +117,13 @@ const ProductForm = ({ product = {}, isEdit = false, handleSuccess } : ProductFo
         <div className="product-form__input-value-container">
           <p>Image</p>
           {productImage?.image && (
-          <img
-            className={`product-form__preview-image ${zoomImage ? 'product-form__preview-image-zoom' : ''}`}
-            src={productImage.image}
-            alt={productName || 'New Image'}
-            onMouseEnter={() => setZoomImage(true)}
-            onMouseLeave={() => setZoomImage(false)}
-          />
+            <img
+              className={cn('product-form__preview-image', { 'product-form__preview-image-zoom': zoomImage })}
+              src={productImage.image}
+              alt={productName || 'New Image'}
+              onMouseEnter={() => setZoomImage(true)}
+              onMouseLeave={() => setZoomImage(false)}
+            />
           )}
           <input
             className="product-form__input-image"
@@ -130,7 +131,7 @@ const ProductForm = ({ product = {}, isEdit = false, handleSuccess } : ProductFo
             onChange={handleImageChange}
           />
         </div>
-        <button className={`${disabledForm ? 'button__disabled' : ''}`} disabled={disabledForm}>{buttonLabel}</button>
+        <button className={disabledForm ? 'button__disabled' : ''} disabled={disabledForm}>{buttonLabel}</button>
       </form>
     </div>
   );
