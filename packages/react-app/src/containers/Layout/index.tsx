@@ -47,19 +47,19 @@ const Layout = () => {
 
   return (
     <div className="layout">
-      <header className="layout_header">
-        <button className="layout_header_logo" onClick={() => navigate(routes.home)}>
-          <img className="layout_header_isotype" src={NeoMarketplace} alt="App Logo" />
+      <header className="layout__header">
+        <button className="layout__header__logo" onClick={() => navigate(routes.home)}>
+          <img className="layout__header__isotype" src={NeoMarketplace} alt="App Logo" />
           <p>
             NeoMarketplace
           </p>
         </button>
-        <div className="layout_header_right">
-          <div className="layout_header_menu">
-            <button className="layout_header_menu_item" onClick={() => navigate(routes.myListing)}>
+        <div className="layout__header__right">
+          <div className="layout__header__menu">
+            <button className="layout__header__menu__item" onClick={() => navigate(routes.myListing)}>
               MY LISTING
             </button>
-            <button className="layout_header_menu_item" onClick={() => navigate(routes.myPurchased)}>
+            <button className="layout__header__menu__item" onClick={() => navigate(routes.myPurchased)}>
               MY PURCHASED
             </button>
           </div>

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import TitleImage from 'assets/title-banner.png';
-import ProductList from '../../components/ProductList';
+import ProductList from 'components/ProductList';
 
-import products from '../../data/mockedData';
+import products from 'data/mockedData';
 
 import './styles.scss';
 
@@ -16,6 +16,7 @@ type Product = {
   price: number,
   publicationDate: string,
   seller: string,
+  sellerPic: string,
   sold: boolean,
 }
 
@@ -53,7 +54,7 @@ const MyListing = () => {
         </div>
 
         {
-          items.length === 0 ? (
+          (!items.length) ? (
             <div>
               No products added on my listing yet.
             </div>

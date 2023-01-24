@@ -15,6 +15,7 @@ type Product = {
   price: number,
   publicationDate: string,
   seller: string,
+  sellerPic: string,
   sold: boolean,
 }
 

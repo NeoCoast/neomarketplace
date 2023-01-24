@@ -2,7 +2,6 @@ import React from 'react';
 import { format }  from 'date-fns';
 
 import MessagesIcon from 'assets/Msgs.svg';
-import DefaultUser from 'assets/DefaultUser.png';
 
 import './styles.scss';
 
@@ -13,6 +12,7 @@ type ProductItemProps = {
   price: number,
   publicationDate: string,
   seller: string,
+  sellerPic: string,
   sold: boolean,
 }
 
@@ -23,6 +23,7 @@ const ProductItem = ({
   price,
   publicationDate,
   seller,
+  sellerPic,
   sold,
 } : ProductItemProps) => (
   <div className="product-item__card">
@@ -49,7 +50,7 @@ const ProductItem = ({
       <div className="product-item__divider" />
       <div className="product-item__seller-container">
         <div className="product-item__avatar-container">
-          <img src={DefaultUser} alt="User Avatar" className="product-item__avatar" />
+          <img src={sellerPic} alt="User Avatar" className="product-item__avatar" />
           <span className="product-item__seller-name">{seller}</span>
         </div>
         <div className="product-item__msgs-container">
