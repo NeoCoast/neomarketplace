@@ -5,6 +5,7 @@ import React, {
   useContext,
 } from 'react';
 import { useParams } from 'react-router-dom';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import { UserType } from 'types/user';
 import { Product } from 'types/product';
@@ -43,6 +44,7 @@ const ItemView = () => {
           image: 'https://educacion30.b-cdn.net/wp-content/uploads/2019/02/girasoles-978x652.jpg',
           seller: 2,
           publicationDate: '2021-01-01',
+          buyer: 1,
         });
       } catch {
         setError('Something went wrong getting item data');
@@ -56,7 +58,17 @@ const ItemView = () => {
     setSeller(usersList.find(({ id }) => id === item?.seller) || null);
   }, [item?.seller, usersList]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <div>
+        <ClipLoader
+          className="loader"
+          loading
+          color="#2C3A61"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="App">
