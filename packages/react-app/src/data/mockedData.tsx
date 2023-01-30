@@ -8,7 +8,6 @@ export default [
     seller: 'Alexis Friss',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: true,
   },
   {
     name: 'Besos Fresa Fini Bolsa 90 Gr.',
@@ -19,7 +18,6 @@ export default [
     seller: 'Lía Malvarez',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: false,
   },
   {
     name: 'Besos Fresa Fini Bolsa 90 Gr.',
@@ -30,7 +28,6 @@ export default [
     seller: 'Lía Malvarez',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: false,
   },
   {
     name: 'Besos Fresa Fini Bolsa 90 Gr.',
@@ -41,7 +38,6 @@ export default [
     seller: 'Lía Malvarez',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: false,
   },
   {
     name: 'Besos Fresa Fini Bolsa 90 Gr.',
@@ -52,7 +48,6 @@ export default [
     seller: 'Gonzalo Sismondi',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: false,
   },
   {
     name: 'Besos Fresa Fini Bolsa 90 Gr.',
@@ -63,7 +58,6 @@ export default [
     seller: 'Alexis Friss',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: false,
   },
   {
     name: 'Besos Fresa Fini Bolsa 90 Gr.',
@@ -74,7 +68,6 @@ export default [
     seller: 'Lía Malvarez',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: true,
   },
   {
     name: 'Beijihnos Fresa Fini Bolsa 90 Gr.',
@@ -85,7 +78,6 @@ export default [
     seller: 'Gonzalo Sismondi',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: false,
   },
   {
     name: 'Besos Fresa Fini Bolsa 90 Gr.',
@@ -96,7 +88,6 @@ export default [
     seller: 'Gonzalo Sismondi',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: true,
   },
   {
     name: 'Besos Fresa Fini Bolsa 90 Gr.',
@@ -107,7 +98,6 @@ export default [
     seller: 'Gonzalo Sismondi',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: false,
   },
   {
     name: 'Kiss Fresa Trolli Bolsa 90 Gr.',
@@ -118,6 +108,5 @@ export default [
     seller: 'Gonzalo Sismondi',
     sellerPic: 'https://i.pravatar.cc/150?img=1',
     msgsCount: 0,
-    sold: true,
   },
 ];

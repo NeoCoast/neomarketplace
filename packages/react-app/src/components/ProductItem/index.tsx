@@ -13,7 +13,6 @@ type ProductItemProps = {
   publicationDate: string,
   seller: string,
   sellerPic: string,
-  sold: boolean,
 }
 
 const ProductItem = ({
@@ -24,16 +23,8 @@ const ProductItem = ({
   publicationDate,
   seller,
   sellerPic,
-  sold,
 } : ProductItemProps) => (
   <div className="product-item__card">
-    {
-      sold && (
-        <div className="product-item__sold">
-          SOLD
-        </div>
-      )
-    }
     <img
       className="product-item__img"
       alt="product img"

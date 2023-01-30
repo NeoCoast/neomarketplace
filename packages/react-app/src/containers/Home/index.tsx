@@ -16,7 +16,6 @@ type Product = {
   publicationDate: string,
   seller: string,
   sellerPic: string,
-  sold: boolean,
 }
 
 const Home = () => {
