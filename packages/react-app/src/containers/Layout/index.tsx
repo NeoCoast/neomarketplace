@@ -12,6 +12,7 @@ import Arrow from 'assets/Arrow.svg';
 import NeoMarketplace from 'assets/NeoMarketplace.svg';
 
 import UserContext, { userType } from 'context';
+import routes from 'constants/routes';
 
 import './styles.scss';
 
@@ -47,7 +48,7 @@ const Layout = () => {
   return (
     <div className="layout">
       <header className="layout__header">
-        <button className="layout__header__logo" onClick={() => navigate('/')}>
+        <button className="layout__header__logo" onClick={() => navigate(routes.home)}>
           <img className="layout__header__isotype" src={NeoMarketplace} alt="App Logo" />
           <p>
             NeoMarketplace
@@ -55,12 +56,10 @@ const Layout = () => {
         </button>
         <div className="layout__header__right">
           <div className="layout__header__menu">
-            <button className="layout__header__menu__item" onClick={() => navigate('/')}>
-              {/* TO DO: Add link My listing screen */}
+            <button className="layout__header__menu__item" onClick={() => navigate(routes.myListing)}>
               MY LISTING
             </button>
-            <button className="layout__header__menu__item" onClick={() => navigate('/')}>
-              {/* TO DO: Add link My purchased screen */}
+            <button className="layout__header__menu__item" onClick={() => navigate(routes.myPurchased)}>
               MY PURCHASED
             </button>
           </div>

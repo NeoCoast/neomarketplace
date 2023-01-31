@@ -19,6 +19,7 @@
   &--active {
     height: 100px;
     transition: ease height .3s;
+    z-index: 1;
   }
 
   &__list {

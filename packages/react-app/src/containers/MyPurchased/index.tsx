@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 
+import TitleImage from 'assets/title-banner.png';
 import ProductList from 'components/ProductList';
 
 import products from 'data/mockedData';
@@ -18,7 +19,7 @@ type Product = {
   sellerPic: string,
 }
 
-const Home = () => {
+const MyPurchased = () => {
   const [loadingItems, setLoadingItems] = useState(false);
   const [items, setItems] = useState<Product[]>([]);
 
@@ -43,19 +44,26 @@ const Home = () => {
     );
   }
 
-  if (!items.length) { // ToDo: Add empty state.
-    return (
-      <div>
-        No products available.
-      </div>
-    );
-  }
-
   return (
-    <div className="App">
-      <ProductList products={items} />
+    <div className="my-purchased">
+      <div>
+        <div className="my-purchased__title-container">
+          <img src={TitleImage} alt="My Purchased" className="my-purchased__title-img" />
+          <span className="my-purchased__title">My Purchased</span>
+        </div>
+
+        {
+          (!items.length) ? (
+            <div>
+              No products purchased yet.
+            </div>
+          ) : (
+            <ProductList products={items} />
+          )
+        }
+      </div>
     </div>
   );
 };
 
-export default Home;
+export default MyPurchased;

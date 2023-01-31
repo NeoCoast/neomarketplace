@@ -10,6 +10,7 @@
   max-width: 1325px;
 
   &__card {
+    position: relative;
     display: flex;
     flex-direction: column;
     min-width: 22%;
@@ -99,6 +100,7 @@
     width: 30px;
     height: 30px;
     margin-right: 8px;
+    border-radius: 50px;
 
     &-container {
       display: flex;
