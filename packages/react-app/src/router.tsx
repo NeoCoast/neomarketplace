@@ -16,6 +16,7 @@ import Layout from 'containers/Layout';
 import NewProduct from 'containers/NewProduct';
 
 import './index.scss';
+import EditProduct from 'containers/EditProduct';
 
 const Router = () => {
   const [selectedUser, setSelectedUser] = useState({
@@ -46,6 +47,7 @@ const Router = () => {
             <Route path={routes.myPurchased} element={<MyPurchased />} />
             <Route path={routes.myListing} element={<MyListing />} />
             <Route path={routes.newProduct} index element={<NewProduct />} />
+            <Route path={routes.editProduct} index element={<EditProduct />} />
           </Route>
         </Routes>
       </UserContext.Provider>
