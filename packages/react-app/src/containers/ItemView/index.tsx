@@ -46,8 +46,6 @@ const ItemView = () => {
     }, 1500);
   }, [itemId]);
 
-  console.log(usersList, item?.seller);
-
   useEffect(() => {
     setSeller(usersList.find(({ id }) => id === item?.seller) || null);
   }, [item?.seller, usersList]);
@@ -87,7 +85,7 @@ const ItemView = () => {
             <img src={`data:image/jpeg;base64,${item?.image}`} alt="Item" />
             <div className="item-box__content__info">
               <div className="item-box__content__seller">
-                <img src={seller?.picture} alt="Seller Avatar" />
+                <img src={`data:image/jpeg;base64,${seller?.picture}`} alt="Seller Avatar" />
                 <p className="item-box__content__seller__name">{seller?.name}</p>
               </div>
               <div className="item-box__content__main">
@@ -97,10 +95,11 @@ const ItemView = () => {
                 </div>
               </div>
               <div className="item-box__content__details">
-                <p className="item-box__content__details__price">{item?.price.toLocaleString('en-US', {
-                  style: 'currency',
-                  currency: 'USD',
-                })}
+                <p className="item-box__content__details__price">
+                  {item?.price.toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  })}
                 </p>
                 <div className="item-box__content__details__date">
                   <p className="item-box__content__details__date__title">published</p>

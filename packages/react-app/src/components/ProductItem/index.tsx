@@ -43,9 +43,14 @@ const ProductItem = ({
         <div className="product-item__divider" />
         <div className="product-item__seller-container">
           <div className="product-item__avatar-container">
-            <img src={`data:image/jpeg;base64,${sellerImage}`} alt="User Avatar" className="product-item__avatar" />
+            <img
+              src={`data:image/jpeg;base64,${sellerImage}`}
+              alt="User Avatar"
+              className="product-item__avatar"
+            />
             <span className="product-item__seller-name">{sellerName}</span>
           </div>
+          <div className="product-item__divider" />
           <div className="product-item__msgs-container">
             <img
               src={MessagesIcon}

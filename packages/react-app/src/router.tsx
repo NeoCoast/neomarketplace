@@ -5,17 +5,20 @@ import {
   BrowserRouter,
 } from 'react-router-dom';
 
+import { UserType } from 'types/user';
+import { users } from 'data/mockedData';
+
 import UserContext from 'context';
 
-import { UserType } from 'types/user';
 import routes from 'constants/routes';
 
 import Home from 'containers/Home';
+import MyPurchased from 'containers/MyPurchased';
+import MyListing from 'containers/MyListing';
 import Layout from 'containers/Layout';
 import ItemView from 'containers/ItemView';
 import NotFound from 'containers/NotFound';
 
-import { users } from 'data/mockedData';
 import './index.scss';
 
 const Router = () => {
@@ -47,6 +50,8 @@ const Router = () => {
 
             <Route path="*" element={<NotFound />} />
             {/* TODO: mejorar not found screen */}
+            <Route path={routes.myPurchased} element={<MyPurchased />} />
+            <Route path={routes.myListing} element={<MyListing />} />
           </Route>
         </Routes>
       </UserContext.Provider>

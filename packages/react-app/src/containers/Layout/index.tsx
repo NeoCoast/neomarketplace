@@ -12,6 +12,8 @@ import NeoMarketplace from 'assets/NeoMarketplace.svg';
 
 import UserContext from 'context';
 
+import routes from 'constants/routes';
+
 import './styles.scss';
 
 const Layout = () => {
@@ -23,7 +25,7 @@ const Layout = () => {
   return (
     <div className="layout">
       <header className="layout__header">
-        <button className="layout__header__logo" onClick={() => navigate('/')}>
+        <button className="layout__header__logo" onClick={() => navigate(routes.home)}>
           <img className="layout__header__isotype" src={NeoMarketplace} alt="App Logo" />
           <p>
             NeoMarketplace
@@ -31,18 +33,20 @@ const Layout = () => {
         </button>
         <div className="layout__header__right">
           <div className="layout__header__menu">
-            <button className="layout__header__menu__item" onClick={() => navigate('/')}>
-              {/* TO DO: Add link My listing screen */}
+            <button className="layout__header__menu__item" onClick={() => navigate(routes.myListing)}>
               MY LISTING
             </button>
-            <button className="layout__header__menu__item" onClick={() => navigate('/')}>
-              {/* TO DO: Add link My purchased screen */}
+            <button className="layout__header__menu__item" onClick={() => navigate(routes.myPurchased)}>
               MY PURCHASED
             </button>
           </div>
           <div className="layout__header__user-container">
             <button onClick={() => setIsOpenUserMenu(!isOpenUserMenu)} className="layout__header__user">
-              <img src={`data:image/jpeg;base64,${selectedUser?.picture}`} alt="User Avatar" className="layout__header__user__avatar" />
+              <img
+                src={`data:image/jpeg;base64,${selectedUser?.picture}`}
+                alt="User Avatar"
+                className="layout__header__user__avatar"
+              />
               {selectedUser?.name}
               <img
                 src={Arrow}
