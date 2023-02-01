@@ -1,19 +1,9 @@
 import React from 'react';
 
+import { Product } from 'types/product';
 import ProductItem from '../ProductItem';
 
 import './styles.scss';
-
-interface Product {
-  id: number,
-  name: string,
-  image: string,
-  msgsCount: number,
-  price: number,
-  publicationDate: string,
-  seller: string,
-  sellerPic: string,
-}
 
 type ProductListProps = {
   products?: Product[],

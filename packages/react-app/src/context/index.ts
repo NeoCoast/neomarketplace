@@ -1,14 +1,10 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
-
-export type userType = {
-  id: number | null;
-  name: string;
-  picture: string;
-};
+import { UserType } from 'types/user';
 
 type userContextType = {
-  selectedUser: userType;
-  setSelectedUser: Dispatch<SetStateAction<userType>>;
+  selectedUser: UserType;
+  setSelectedUser: Dispatch<SetStateAction<UserType>>;
+  usersList: UserType[];
 };
 
 export default createContext({
@@ -18,4 +14,5 @@ export default createContext({
     picture: '',
   },
   setSelectedUser: () => {},
+  usersList: [],
 } as userContextType);
