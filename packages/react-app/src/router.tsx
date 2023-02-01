@@ -15,6 +15,7 @@ import Layout from 'containers/Layout';
 import ItemView from 'containers/ItemView';
 import NotFound from 'containers/NotFound';
 
+import { users } from 'data/mockedData';
 import './index.scss';
 
 const Router = () => {
@@ -31,29 +32,9 @@ const Router = () => {
   );
 
   useEffect(() => {
-    setSelectedUser({
-      id: 1,
-      name: 'User Name 1',
-      picture: 'https://i.pravatar.cc/150?img=1',
-    }); // TO DO: real backend request
+    setSelectedUser(users[0]); // TO DO: real backend request
 
-    setUsersList([
-      {
-        id: 1,
-        name: 'User Name 1',
-        picture: 'https://i.pravatar.cc/150?img=1',
-      },
-      {
-        id: 2,
-        name: 'User Name 2',
-        picture: 'https://i.pravatar.cc/150?img=2',
-      },
-      {
-        id: 3,
-        name: 'User Name 3',
-        picture: 'https://i.pravatar.cc/150?img=3',
-      },
-    ]);
+    setUsersList(users);
   }, []);
 
   return (

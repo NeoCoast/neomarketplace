@@ -7,4 +7,5 @@ export type Product = {
   publicationDate: string,
   seller: number,
   buyer?: number,
+  msgsCount: number,
 };

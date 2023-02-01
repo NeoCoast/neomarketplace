@@ -34,7 +34,7 @@ const UsersDropdown = ({ isOpen, setIsOpen, usersList } : DropdownProps) => {
               className={cn('dropdown__user', { 'dropdown__user--border': index !== usersList.length - 1 })}
             >
               <img
-                src={picture}
+                src={`data:image/jpeg;base64,${picture}`}
                 alt="User Avatar"
                 className="dropdown__user__avatar"
               />

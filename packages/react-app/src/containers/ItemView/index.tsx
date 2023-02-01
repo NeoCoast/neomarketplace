@@ -9,6 +9,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 import { UserType } from 'types/user';
 import { Product } from 'types/product';
+import { products } from 'data/mockedData';
 
 import CustomButton from 'components/CustomButton';
 import StatusTag from 'components/StatusTag';
@@ -36,16 +37,7 @@ const ItemView = () => {
   useEffect(() => {
     setTimeout(() => {
       try {
-        setItem({ // TO DO: real backend request
-          id: 1,
-          name: '92 ALLIUM PLACE, ORLANDO FL 32827',
-          description: 'Vestibulum ante ipsum primis in faucibus orci \nluctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit... . Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Proin sodales ultrices nulla blandit volutpat. Vestibulum ante ipsu',
-          price: 100,
-          image: 'https://educacion30.b-cdn.net/wp-content/uploads/2019/02/girasoles-978x652.jpg',
-          seller: 2,
-          publicationDate: '2021-01-01',
-          buyer: 1,
-        });
+        setItem(products[0]);
       } catch {
         setError('Something went wrong getting item data');
       } finally {
@@ -53,6 +45,8 @@ const ItemView = () => {
       }
     }, 1500);
   }, [itemId]);
+
+  console.log(usersList, item?.seller);
 
   useEffect(() => {
     setSeller(usersList.find(({ id }) => id === item?.seller) || null);
@@ -90,7 +84,7 @@ const ItemView = () => {
             )}
           </div>
           <div className="item-box__content">
-            <img src={item?.image} alt="Item" />
+            <img src={`data:image/jpeg;base64,${item?.image}`} alt="Item" />
             <div className="item-box__content__info">
               <div className="item-box__content__seller">
                 <img src={seller?.picture} alt="Seller Avatar" />

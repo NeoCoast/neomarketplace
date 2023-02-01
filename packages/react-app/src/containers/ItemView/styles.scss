@@ -78,6 +78,8 @@
     &__description {
       color: $dark_gray;
       line-height: 25px;
+      max-width: 35vw;
+      overflow-wrap: break-word;
       max-height: 25vh;
       min-height: 10vh;
       font-size: 14px;
@@ -96,7 +98,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      width: 100%;
+      width: 50%;
       height: 100%;
     }
 

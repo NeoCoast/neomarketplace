@@ -3,19 +3,11 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 import ProductList from '../../components/ProductList';
 
-import products from '../../data/mockedData';
+import { products } from '../../data/mockedData';
+
+import { Product } from '../../types/product';
 
 import './styles.scss';
-
-type Product = {
-  id: number,
-  name: string,
-  image: string,
-  msgsCount: number,
-  price: number,
-  publicationDate: string,
-  seller: string,
-}
 
 const Home = () => {
   const [loadingItems, setLoadingItems] = useState(false);
