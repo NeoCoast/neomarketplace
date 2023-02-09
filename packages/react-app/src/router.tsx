@@ -1,4 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, {
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import {
   Routes,
   Route,
@@ -16,6 +20,7 @@ import Home from 'containers/Home';
 import MyPurchased from 'containers/MyPurchased';
 import MyListing from 'containers/MyListing';
 import Layout from 'containers/Layout';
+import NewProduct from 'containers/NewProduct';
 import ItemView from 'containers/ItemView';
 import NotFound from 'containers/NotFound';
 
@@ -52,6 +57,7 @@ const Router = () => {
             {/* TODO: mejorar not found screen */}
             <Route path={routes.myPurchased} element={<MyPurchased />} />
             <Route path={routes.myListing} element={<MyListing />} />
+            <Route path={routes.newProduct} index element={<NewProduct />} />
           </Route>
         </Routes>
       </UserContext.Provider>
