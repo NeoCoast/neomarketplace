@@ -3,30 +3,25 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import ProductForm from 'components/ProductForm';
 
-import './styles.scss';
+import { ProductType } from 'types/product';
+import { products } from 'data/mockedData';
 
-type ProductType = {
-  name: string,
-  description: string,
-  price: number,
-  image?: File,
-}
+import './styles.scss';
 
 const EditProduct = () => {
   const [product, setProduct] = useState<ProductType>();
+
   const { id } = useParams();
   const navigate = useNavigate();
+
   const handleSuccess = () => {
     navigate('/');
   };
 
   useEffect(() => {
-    const prod = {
-      name: 'Fini 300g',
-      description: 'Las mejores fini del estado',
-      price: 80,
-    };
-    setProduct(prod);
+    setTimeout(() => { // TO DO: real backend request
+      setProduct(products[0]);
+    }, 1000)
   }, [id]);
 
   if (!product) {
@@ -36,8 +31,8 @@ const EditProduct = () => {
   return (
     <ProductForm
       handleSuccess={handleSuccess}
-      isEdit
       product={product}
+      isEdit
     />
   );
 };

@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: space-between;
     color: white;
+    padding-right: 30px;
 
     &__logo {
       display: flex;
@@ -35,7 +36,7 @@
       align-items: center;
       justify-content: space-between;
       margin-right: 20px;
-      width: 550px;
+      width: 570px;
     }
 
     &__menu {
@@ -59,16 +60,18 @@
 
     &__user-container {
       position: relative;
+      width: 230px;
     }
 
     &__user {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
-      margin: 0 20px;
+      justify-content: space-around;
+      margin-left: 20px;
       font-size: 16px;
       font-weight: 500;
+      width: 210px;
 
       &__avatar {
         width: 35px;

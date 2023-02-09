@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import { UserType } from 'types/user';
-import { Product } from 'types/product';
+import { ProductType } from 'types/product';
 import { products } from 'data/mockedData';
 
 import CustomButton from 'components/CustomButton';
@@ -28,7 +28,7 @@ const ItemView = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const [item, setItem] = useState<Product | null>(null);
+  const [item, setItem] = useState<ProductType | null>(null);
   const [seller, setSeller] = useState<UserType | null>(null);
 
   const isSold = useMemo(() => item?.buyer, [item?.buyer]);
@@ -54,7 +54,8 @@ const ItemView = () => {
     return (
       <div>
         <ClipLoader
-          className="loader"
+          className="App__loader"
+          size={70}
           loading
           color="#2C3A61"
         />

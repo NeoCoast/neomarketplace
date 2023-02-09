@@ -5,7 +5,7 @@ import MessagesIcon from 'assets/Msgs.svg';
 
 import { users } from 'data/mockedData';
 
-import { Product } from 'types/product';
+import { ProductType } from 'types/product';
 
 import './styles.scss';
 
@@ -16,7 +16,7 @@ const ProductItem = ({
   price,
   publicationDate,
   seller,
-} : Product) => {
+} : ProductType) => {
   const [sellerName, setSellerName] = useState<string>('');
   const [sellerImage, setSellerImage] = useState<string>('');
 

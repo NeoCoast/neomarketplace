@@ -41,7 +41,7 @@ const Router = () => {
   );
 
   useEffect(() => {
-    setSelectedUser(users[0]); // TO DO: real backend request
+    setSelectedUser(users[3]); // TO DO: real backend request
 
     setUsersList(users);
   }, []);

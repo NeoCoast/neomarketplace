@@ -1,47 +1,34 @@
 import React, { useMemo, useState } from 'react';
 import cn from 'classnames';
 
+import { ProductType } from 'types/product';
+
 import backgroundImage from 'assets/ProductFormBackImage.png';
 
 import './styles.scss';
 
 type ProductFormType = {
-  product?: {
-    name?: string,
-    description?: string,
-    price?: number,
-    image?: File,
-  }
-  isEdit?: false,
-  handleSuccess: () => void,
-} | {
-  product: {
-    name: string,
-    description: string,
-    price: number,
-    image?: File,
-  }
-  isEdit: true
+  product?: ProductType,
+  isEdit?: boolean,
   handleSuccess: () => void,
 }
 
-type B64Image = {
-  name?: string,
-  image?: string,
-}
-
-const ProductForm = ({ product = {}, isEdit = false, handleSuccess } : ProductFormType) => {
+const ProductForm = ({
+  product,
+  isEdit = false,
+  handleSuccess,
+} : ProductFormType) => {
   const {
     name = '',
     description = '',
     price = 0,
-    image = {},
-  } = product;
+    image = '',
+  } = product || {};
 
   const [productName, setProductName] = useState<string>(name);
   const [productDescription, setProductDescription] = useState<string>(description);
   const [productPrice, setProductPrice] = useState<number>(price);
-  const [productImage, setProductImage] = useState<B64Image>(image);
+  const [productImage, setProductImage] = useState<string>(image);
   const [zoomImage, setZoomImage] = useState<boolean>(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -51,7 +38,7 @@ const ProductForm = ({ product = {}, isEdit = false, handleSuccess } : ProductFo
       name: productName,
       description: productDescription,
       price: productPrice,
-      // image: productImage,
+      image: productImage,
     };
 
     // Todo: Add trpc Create or Edit call!
@@ -76,7 +63,7 @@ const ProductForm = ({ product = {}, isEdit = false, handleSuccess } : ProductFo
     if (event.target.files?.length) {
       const file = event.target.files[0];
       const b64File = await convertBase64(file);
-      setProductImage({ name: file?.name, image: b64File as string });
+      setProductImage(b64File as string);
     }
   };
 
@@ -116,10 +103,10 @@ const ProductForm = ({ product = {}, isEdit = false, handleSuccess } : ProductFo
         </div>
         <div className="product-form__input-value-container">
           <p>Image</p>
-          {productImage?.image && (
+          {productImage && (
             <img
               className={cn('product-form__preview-image', { 'product-form__preview-image-zoom': zoomImage })}
-              src={productImage.image}
+              src={productImage}
               alt={productName || 'New Image'}
               onMouseEnter={() => setZoomImage(true)}
               onMouseLeave={() => setZoomImage(false)}

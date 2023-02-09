@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Product } from 'types/product';
+import { ProductType } from 'types/product';
 import ProductItem from '../ProductItem';
 
 import './styles.scss';
 
 type ProductListProps = {
-  products?: Product[],
+  products?: ProductType[],
 }
 
 const ProductList = ({ products = [] } : ProductListProps) => (
