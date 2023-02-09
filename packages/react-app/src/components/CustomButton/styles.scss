@@ -1,0 +1,41 @@
+@import "../../constants/colors.scss";
+
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-width: 150px;
+  padding: 0 30px;
+  background-color: $primary;
+  color: $white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 3px 3px 4px $shadow;
+
+  &:hover {
+    transform: translateY(-0.05rem);
+    box-shadow: 0 0.1rem 0.5rem $medium_gray;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  &--primary {
+    background-color: $green;
+  }
+
+  &___text {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  &__icon {
+    margin-right: 15px;
+    width: 20px;
+  }
+}

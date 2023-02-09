@@ -14,4 +14,28 @@ model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
   name  String?
+  products Product[] @relation("owner")
+  product Product? @relation("buyer")
+}
+
+model Product {
+  id    Int     @id @default(autoincrement())
+  name  String
+  price Float
+  image String?
+  description String
+  status ProductStatus  @default(Active)
+  owner User @relation("owner", fields: [userId], references: [id])
+  userId Int
+  buyer User? @relation("buyer", fields: [buyerId], references: [id])
+  buyerId Int? @unique
+  createdAt  DateTime   @default(now())
+  lastUpdated  DateTime   @default(now())
+  comments String[]
+}
+
+enum ProductStatus {
+  Active
+  Inactive
+  Purchased
 }

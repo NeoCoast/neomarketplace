@@ -4,20 +4,10 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import TitleImage from 'assets/title-banner.png';
 import ProductList from 'components/ProductList';
 
-import products from 'data/mockedData';
+import { products } from 'data/mockedData';
+import { Product } from 'types/product';
 
 import './styles.scss';
-
-type Product = {
-  id: number,
-  name: string,
-  image: string,
-  msgsCount: number,
-  price: number,
-  publicationDate: string,
-  seller: string,
-  sellerPic: string,
-}
 
 const MyPurchased = () => {
   const [loadingItems, setLoadingItems] = useState(false);

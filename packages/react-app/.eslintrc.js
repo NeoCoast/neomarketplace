@@ -56,6 +56,8 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     '@typescript-eslint/no-empty-function': 0,
     'no-continue': 0,
+    'react/jsx-no-comment-textnodes': 0,
+    'react/jsx-one-expression-per-line': 0,
   },
   settings: {
     'import/resolver': {

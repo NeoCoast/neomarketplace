@@ -48,6 +48,7 @@
 
   &__date {
     color: #6D737A;
+
     font: {
       size: 18px;
       weight: 500;
@@ -56,6 +57,7 @@
 
   &__price {
     color: #4A60A1;
+
     font: {
       size: 20px;
       font-weight: 600;
@@ -72,10 +74,12 @@
   &__name {
     display: flex;
     color: #363A3D;
+
     font: {
       size: 22px;
       weight: 500;
     }
+
     line-height: 30px;
     text-align: left;
   }
@@ -89,6 +93,7 @@
     &-count {
       margin-left: 6px;
       color: #6D737A;
+
       font: {
         size: 16px;
         weight: 500;
@@ -118,9 +123,10 @@
 
     &-name {
       color: #363A3D;
+
       font: {
         weight: 500;
-        size: 20px;
+        size: 16px;
       }
     }
   }

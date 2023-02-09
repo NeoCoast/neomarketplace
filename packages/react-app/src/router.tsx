@@ -1,11 +1,18 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, {
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import {
   Routes,
   Route,
   BrowserRouter,
 } from 'react-router-dom';
 
-import UserContext, { userType } from 'context';
+import { UserType } from 'types/user';
+import { users } from 'data/mockedData';
+
+import UserContext from 'context';
 
 import routes from 'constants/routes';
 
@@ -14,6 +21,8 @@ import MyPurchased from 'containers/MyPurchased';
 import MyListing from 'containers/MyListing';
 import Layout from 'containers/Layout';
 import NewProduct from 'containers/NewProduct';
+import ItemView from 'containers/ItemView';
+import NotFound from 'containers/NotFound';
 
 import './index.scss';
 
@@ -22,19 +31,18 @@ const Router = () => {
     id: null,
     name: '',
     picture: '',
-  } as userType);
+  } as UserType);
+  const [usersList, setUsersList] = useState<UserType[]>([]);
 
   const contextValue = useMemo(
-    () => ({ selectedUser, setSelectedUser }),
-    [selectedUser, setSelectedUser],
+    () => ({ selectedUser, setSelectedUser, usersList }),
+    [selectedUser, usersList],
   );
 
   useEffect(() => {
-    setSelectedUser({
-      id: 1,
-      name: 'User Name 1',
-      picture: 'https://i.pravatar.cc/150?img=1',
-    }); // TO DO: real backend request
+    setSelectedUser(users[0]); // TO DO: real backend request
+
+    setUsersList(users);
   }, []);
 
   return (
@@ -43,6 +51,10 @@ const Router = () => {
         <Routes>
           <Route path={routes.home} element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path={routes.item} element={<ItemView />} />
+
+            <Route path="*" element={<NotFound />} />
+            {/* TODO: mejorar not found screen */}
             <Route path={routes.myPurchased} element={<MyPurchased />} />
             <Route path={routes.myListing} element={<MyListing />} />
             <Route path={routes.newProduct} index element={<NewProduct />} />
