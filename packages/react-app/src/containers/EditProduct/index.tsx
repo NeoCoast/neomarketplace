@@ -21,7 +21,6 @@ const EditProduct = () => {
   };
 
   useEffect(() => {
-    console.log('id');
     const prod = {
       name: 'Fini 300g',
       description: 'Las mejores fini del estado',
