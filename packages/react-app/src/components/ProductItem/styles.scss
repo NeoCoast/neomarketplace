@@ -18,12 +18,13 @@
     max-width: 424px;
     margin: 25px 1.5% 0 1.5%;
     border-radius: 8px;
-    box-shadow: 10px 10px 40px rgba(74, 96, 161, 0.2);
+    box-shadow: 10px 10px 40px $shadow;
     font-family: 'Inter', sans-serif;
     transition: all .2s ease-in-out;
+    align-items: center;
 
     &:hover {
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .09);
+      box-shadow: 0 0.5rem 1rem $transparent_black;
       transform: translateY(-0.5rem);
       cursor: pointer;
     }
@@ -32,7 +33,9 @@
   &__img {
     width: 100%;
     border-radius: 8px;
+    margin-top: 20px;
     max-height: 250px;
+    object-fit: contain;
   }
 
   &__body {

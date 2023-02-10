@@ -4,7 +4,11 @@ import React, {
   useMemo,
   useContext,
 } from 'react';
-import { useParams } from 'react-router-dom';
+import {
+  useParams,
+  generatePath,
+  useNavigate,
+} from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import { UserType } from 'types/user';
@@ -20,10 +24,12 @@ import CartIcon from 'assets/CartIcon.svg';
 import UserContext from 'context';
 
 import './styles.scss';
+import routes from 'constants/routes';
 
 const ItemView = () => {
   const { id: itemId } = useParams();
   const { selectedUser, usersList } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
@@ -37,7 +43,7 @@ const ItemView = () => {
   useEffect(() => {
     setTimeout(() => {
       try {
-        setItem(products[0]);
+        setItem(products.find(({ id }) => id === Number(itemId)) || null);
       } catch {
         setError('Something went wrong getting item data');
       } finally {
@@ -78,7 +84,15 @@ const ItemView = () => {
                 text={isOwner ? 'Edit' : 'Purchase Item'}
                 icon={isOwner ? EditIcon : CartIcon}
                 isPrimary={!isOwner}
-                onClick={() => {}}
+                onClick={() => {
+                  const itemPath = generatePath(routes.editProduct, { id: itemId });
+
+                  if (isOwner) {
+                    navigate(itemPath);
+                  } else { // ToDo: Add purchase logic
+                    console.log('Purchase Item');
+                  }
+                }}
               />
             )}
           </div>

@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate, generatePath } from 'react-router-dom';
 import { format } from 'date-fns';
 
 import MessagesIcon from 'assets/Msgs.svg';
+import routes from 'constants/routes';
 
 import { users } from 'data/mockedData';
-
 import { ProductType } from 'types/product';
 
 import './styles.scss';
 
 const ProductItem = ({
+  id: productId,
   name,
   image,
   msgsCount,
@@ -17,6 +19,8 @@ const ProductItem = ({
   publicationDate,
   seller,
 } : ProductType) => {
+  const navigate = useNavigate();
+
   const [sellerName, setSellerName] = useState<string>('');
   const [sellerImage, setSellerImage] = useState<string>('');
 
@@ -26,7 +30,13 @@ const ProductItem = ({
   }, []);
 
   return (
-    <div className="product-item__card">
+    <button
+      className="product-item__card"
+      onClick={() => {
+        const itemPath = generatePath(routes.item, { id: productId });
+        navigate(itemPath);
+      }}
+    >
       <img
         className="product-item__img"
         alt="product img"
@@ -60,7 +70,7 @@ const ProductItem = ({
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

@@ -14,19 +14,18 @@ import './styles.scss';
 const MyListing = () => {
   const { selectedUser } = useContext(UserContext);
 
-  const [loadingItems, setLoadingItems] = useState(false);
+  const [loadingItems, setLoadingItems] = useState(true);
   const [items, setItems] = useState<ProductType[]>([]);
 
   useEffect(() => {
     try {
-      setLoadingItems(true);
       setItems(products.filter(({ seller }) => seller === selectedUser.id));
     } finally {
       setTimeout(() => {
         setLoadingItems(false);
       }, 2000); // ToDo.
     }
-  }, []);
+  }, [products, selectedUser]);
 
   if (loadingItems) {
     return (
