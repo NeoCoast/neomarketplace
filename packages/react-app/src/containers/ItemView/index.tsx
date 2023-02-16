@@ -78,7 +78,7 @@ const ItemView = () => {
       ) : (
         <div className="item-box">
           <div className="item-box__title">
-            <p className="item-box__title__text">{item?.name}</p>
+            <p className="item-box__title-text">{item?.name}</p>
             {isSold && !isOwner ? (
               <StatusTag text="Sold" />
             ) : (
@@ -100,27 +100,27 @@ const ItemView = () => {
           </div>
           <div className="item-box__content">
             <img src={`data:image/jpeg;base64,${item?.image}`} alt="Item" />
-            <div className="item-box__content__info">
-              <div className="item-box__content__seller">
+            <div className="item-box__content-info">
+              <div className="item-box__content-seller">
                 <img src={`data:image/jpeg;base64,${seller?.picture}`} alt="Seller Avatar" />
-                <p className="item-box__content__seller__name">{seller?.name}</p>
+                <p className="item-box__content-seller-name">{seller?.name}</p>
               </div>
-              <div className="item-box__content__main">
-                <p className="item-box__content__title">{item?.name}</p>
-                <div className="item-box__content__description">
+              <div className="item-box__content-main">
+                <p className="item-box__content-title">{item?.name}</p>
+                <div className="item-box__content-description">
                   {item?.description}
                 </div>
               </div>
-              <div className="item-box__content__details">
-                <p className="item-box__content__details__price">
+              <div className="item-box__content-details">
+                <p className="item-box__content-details-price">
                   {item?.price.toLocaleString('en-US', {
                     style: 'currency',
                     currency: 'USD',
                   })}
                 </p>
-                <div className="item-box__content__details__date">
-                  <p className="item-box__content__details__date__title">published</p>
-                  <p className="item-box__content__details__date__info">{item?.publicationDate}</p>
+                <div className="item-box__content-details-date">
+                  <p className="item-box__content-details-date-title">published</p>
+                  <p className="item-box__content-details-date-info">{item?.publicationDate}</p>
                 </div>
               </div>
               {/* Comments area??? */}
