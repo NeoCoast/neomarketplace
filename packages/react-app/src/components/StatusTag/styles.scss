@@ -21,5 +21,20 @@
     letter-spacing: 1px;
     font-weight: 600;
     color: $white;
+
+    &--listing {
+      font-size: 1.2rem;
+    }
+  }
+
+  &--listing {
+    top: 0;
+    right: 0;
+    height: 35px;
+    width: 27%;
+  }
+
+  &--green {
+    background: $green;
   }
 }

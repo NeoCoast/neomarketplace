@@ -26,7 +26,7 @@ const MyPurchased = () => {
         setLoadingItems(false);
       }, 2000); // ToDo.
     }
-  }, []);
+  }, [selectedUser]);
 
   if (loadingItems) {
     return (

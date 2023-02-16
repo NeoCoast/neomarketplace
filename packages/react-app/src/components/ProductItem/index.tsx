@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, generatePath } from 'react-router-dom';
+import { useNavigate, generatePath, useLocation } from 'react-router-dom';
 import { format } from 'date-fns';
 
 import MessagesIcon from 'assets/Msgs.svg';
@@ -9,6 +9,7 @@ import { users } from 'data/mockedData';
 import { ProductType } from 'types/product';
 
 import './styles.scss';
+import StatusTag from 'components/StatusTag';
 
 const ProductItem = ({
   id: productId,
@@ -18,8 +19,10 @@ const ProductItem = ({
   price,
   publicationDate,
   seller,
+  buyer,
 } : ProductType) => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const [sellerName, setSellerName] = useState<string>('');
   const [sellerImage, setSellerImage] = useState<string>('');
@@ -37,13 +40,20 @@ const ProductItem = ({
         navigate(itemPath);
       }}
     >
+      {(typeof buyer === 'number') && (
+        <StatusTag
+          text="Sold"
+          isListing
+          isGreen={pathname === '/my-listing'}
+        />
+      )}
       <img
         className="product-item__img"
         alt="product img"
         src={`data:image/jpeg;base64,${image}`}
       />
+      <span className="product-item__name">{name}</span>
       <div className="product-item__body">
-        <span className="product-item__name">{name}</span>
         <div className="product-item__price-container">
           <span className="product-item__price">
             $ {price}

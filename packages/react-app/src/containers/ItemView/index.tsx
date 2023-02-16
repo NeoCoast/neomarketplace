@@ -13,6 +13,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 import { UserType } from 'types/user';
 import { ProductType } from 'types/product';
+
 import { products } from 'data/mockedData';
 
 import CustomButton from 'components/CustomButton';
@@ -37,7 +38,7 @@ const ItemView = () => {
   const [item, setItem] = useState<ProductType | null>(null);
   const [seller, setSeller] = useState<UserType | null>(null);
 
-  const isSold = useMemo(() => item?.buyer, [item?.buyer]);
+  const isSold = useMemo(() => (typeof item?.buyer === 'number'), [item?.buyer]);
   const isOwner = useMemo(() => item?.seller === selectedUser.id, [item?.seller, selectedUser.id]);
 
   useEffect(() => {
