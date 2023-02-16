@@ -21,11 +21,16 @@
   &:hover {
     transform: translateY(-0.05rem);
     box-shadow: 3px 3px 4px $transparent_black;
-    cursor: pointer;
   }
 
   &--primary {
     background-color: $green;
+  }
+
+  &--disabled {
+    color: $white;
+    background-color: $disabled;
+    cursor: not-allowed;
   }
 
   &___text {

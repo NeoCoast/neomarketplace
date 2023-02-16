@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { ProductType } from 'types/product';
 
 import backgroundImage from 'assets/ProductFormBackImage.png';
+import CustomButton from 'components/CustomButton';
 
 import './styles.scss';
 
@@ -63,62 +64,73 @@ const ProductForm = ({
     if (event.target.files?.length) {
       const file = event.target.files[0];
       const b64File = await convertBase64(file);
-      setProductImage(b64File as string);
+
+      setProductImage((b64File as string).replace(/data:image\/\w+;base64,/g, ''));
     }
   };
 
   const disabledForm = useMemo(
-    () => !productName || !productDescription || !productPrice,
-    [productName, productDescription, productPrice],
+    () => !productName || !productDescription || !productPrice || !productImage,
+    [productName, productDescription, productPrice, productImage],
   );
 
-  const buttonLabel = isEdit ? 'Save' : 'Publish New Item';
+  const buttonLabel = isEdit ? 'Save Changes' : 'Publish New Item';
+  const formTitle = isEdit ? 'Edit Item' : 'New Item';
 
   return (
     <div className="product-form">
+      <div className="product-form__title">{formTitle}</div>
       <img className="product-form__image" src={backgroundImage} alt="Background" />
       <form onSubmit={handleSubmit}>
-        <div className="product-form__input-value-container">
-          <p>Item name</p>
-          <input
-            onChange={(e) => setProductName(e.target.value)}
-            value={productName}
-          />
-        </div>
-        <div className="product-form__input-value-container">
-          <p>Item description</p>
-          {/* eslint-disable-next-line react/self-closing-comp */}
-          <textarea
-            onChange={(e) => setProductDescription(e.target.value)}
-            value={productDescription}
-          >
-          </textarea>
-        </div>
-        <div className="product-form__input-value-container">
-          <p>Price</p>
-          <input
-            onChange={(e) => setProductPrice(parseInt(e.target.value.slice(1), 10) || 0)}
-            value={`$${productPrice}`}
-          />
-        </div>
-        <div className="product-form__input-value-container">
-          <p>Image</p>
-          {productImage && (
-            <img
-              className={cn('product-form__preview-image', { 'product-form__preview-image-zoom': zoomImage })}
-              src={productImage}
-              alt={productName || 'New Image'}
-              onMouseEnter={() => setZoomImage(true)}
-              onMouseLeave={() => setZoomImage(false)}
+        <div className="product-form__content">
+          <div className="product-form__input-value-container">
+            <p>Item name</p>
+            <input
+              onChange={(e) => setProductName(e.target.value)}
+              value={productName}
             />
-          )}
-          <input
-            className="product-form__input-image"
-            type="file"
-            onChange={handleImageChange}
+          </div>
+          <div className="product-form__input-value-container">
+            <p>Item description</p>
+            {/* eslint-disable-next-line react/self-closing-comp */}
+            <textarea
+              onChange={(e) => setProductDescription(e.target.value)}
+              value={productDescription}
+            >
+            </textarea>
+          </div>
+          <div className="product-form__input-value-container">
+            <p>Price</p>
+            <input
+              onChange={(e) => setProductPrice(parseInt(e.target.value.slice(1), 10) || 0)}
+              value={`$${productPrice}`}
+            />
+          </div>
+          <div className="product-form__input-value-container">
+            <p>Image</p>
+            {productImage && (
+              <img
+                className={cn('product-form__preview-image', { 'product-form__preview-image-zoom': zoomImage })}
+                src={`data:image/jpeg;base64,${productImage}`}
+                alt={productName || 'New Image'}
+                onMouseEnter={() => setZoomImage(true)}
+                onMouseLeave={() => setZoomImage(false)}
+              />
+            )}
+            <input
+              className="product-form__input-image"
+              type="file"
+              onChange={handleImageChange}
+            />
+          </div>
+        </div>
+        <div className="product-form__button">
+          <CustomButton
+            disabled={disabledForm}
+            text={buttonLabel}
+            onClick={handleSuccess}
           />
         </div>
-        <button className={disabledForm ? 'button__disabled' : ''} disabled={disabledForm}>{buttonLabel}</button>
       </form>
     </div>
   );

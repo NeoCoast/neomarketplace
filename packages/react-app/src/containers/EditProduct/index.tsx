@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import ProductForm from 'components/ProductForm';
 
@@ -25,7 +26,14 @@ const EditProduct = () => {
   }, [id]);
 
   if (!product) {
-    return <p>Loading</p>;
+    return (
+      <ClipLoader
+        className="App__loader"
+        size={70}
+        loading={!product}
+        color="#2C3A61"
+      />
+    );
   }
 
   return (
