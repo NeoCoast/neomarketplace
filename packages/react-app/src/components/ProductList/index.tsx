@@ -6,6 +6,7 @@ import routes from 'constants/routes';
 
 import CustomButton from 'components/CustomButton';
 import ProductItem from 'components/ProductItem';
+import EmptyState from 'components/EmptyState';
 
 import './styles.scss';
 
@@ -25,11 +26,15 @@ const ProductList = ({ products = [] } : ProductListProps) => {
         />
       </div>
 
-      <div className="products__list">
-        {products.map((product) => (
-          <ProductItem {...product} key={product.id} />
-        ))}
-      </div>
+      {products.length === 0 ? (
+        <EmptyState text="No products found" />
+      ) : (
+        <div className="products__list">
+          {products.map((product) => (
+            <ProductItem {...product} key={product.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

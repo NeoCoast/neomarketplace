@@ -47,15 +47,7 @@ const MyPurchased = () => {
           <span className="my-purchased__title">My Purchased</span>
         </div>
 
-        {
-          (!items.length) ? (
-            <div>
-              No products purchased yet.
-            </div>
-          ) : (
-            <ProductList products={items} />
-          )
-        }
+        <ProductList products={items} />
       </div>
     </div>
   );

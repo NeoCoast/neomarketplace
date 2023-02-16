@@ -18,6 +18,7 @@ import { products } from 'data/mockedData';
 
 import CustomButton from 'components/CustomButton';
 import StatusTag from 'components/StatusTag';
+import EmptyState from 'components/EmptyState';
 
 import EditIcon from 'assets/EditIcon.svg';
 import CartIcon from 'assets/CartIcon.svg';
@@ -72,8 +73,8 @@ const ItemView = () => {
 
   return (
     <div className="App">
-      {error ? (
-        <div>{error}</div>
+      {error || !item ? (
+        <EmptyState text={error || 'Item not found'} />
       ) : (
         <div className="item-box">
           <div className="item-box__title">

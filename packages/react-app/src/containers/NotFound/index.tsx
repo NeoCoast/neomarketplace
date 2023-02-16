@@ -1,11 +1,11 @@
 import React from 'react';
 
+import EmptyState from 'components/EmptyState';
+
 import './styles.scss';
 
 const NotFound = () => (
-  <div className="App">
-    Not Found
-  </div>
+  <EmptyState text="This route was not found" />
 );
 
 export default NotFound;

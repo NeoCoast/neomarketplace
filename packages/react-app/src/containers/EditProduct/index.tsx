@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import ProductForm from 'components/ProductForm';
+import EmptyState from 'components/EmptyState';
 
 import { ProductType } from 'types/product';
 import { products } from 'data/mockedData';
@@ -10,9 +11,10 @@ import { products } from 'data/mockedData';
 import './styles.scss';
 
 const EditProduct = () => {
-  const [product, setProduct] = useState<ProductType>();
+  const [product, setProduct] = useState<ProductType | null>();
+  const [isLoading, setIsLoading] = useState(true);
 
-  const { id } = useParams();
+  const { id: itemId } = useParams();
   const navigate = useNavigate();
 
   const handleSuccess = () => {
@@ -20,12 +22,13 @@ const EditProduct = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => { // TO DO: real backend request
-      setProduct(products[0]);
+    setTimeout(() => { // TO DO: real backend request and add error handling
+      setProduct(products.find(({ id }) => id === Number(itemId)) || null);
+      setIsLoading(false);
     }, 1000)
-  }, [id]);
+  }, [itemId]);
 
-  if (!product) {
+  if (isLoading) {
     return (
       <ClipLoader
         className="App__loader"
@@ -33,6 +36,12 @@ const EditProduct = () => {
         loading={!product}
         color="#2C3A61"
       />
+    );
+  }
+
+  if (!product) {
+    return (
+      <EmptyState text='Item not found'/>
     );
   }
 

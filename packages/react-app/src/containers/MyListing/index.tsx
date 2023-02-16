@@ -46,15 +46,7 @@ const MyListing = () => {
           <span className="my-listing__title">My Listing</span>
         </div>
 
-        {
-          (!items.length) ? (
-            <div>
-              No products added on my listing yet.
-            </div>
-          ) : (
-            <ProductList products={items} />
-          )
-        }
+        <ProductList products={items} />
       </div>
     </div>
   );
