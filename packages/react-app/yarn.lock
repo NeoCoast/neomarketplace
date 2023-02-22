@@ -1763,6 +1763,19 @@
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
 
+"@tanstack/query-core@4.24.10":
+  version "4.24.10"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-4.24.10.tgz#758e1f5b2d7faf7316d299facd272a9f64c26299"
+  integrity sha512-2QywqXEAGBIUoTdgn1lAB4/C8QEqwXHj2jrCLeYTk2xVGtLiPEUD8jcMoeB2noclbiW2mMt4+Fq7fZStuz3wAQ==
+
+"@tanstack/react-query@^4.24.10":
+  version "4.24.10"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-4.24.10.tgz#2e1004bb1d1f55198961a21e875e2c65ec865130"
+  integrity sha512-FY1DixytOcNNCydPQXLxuKEV7VSST32CAuJ55BjhDNqASnMLZn+6c30yQBMrODjmWMNwzfjMZnq0Vw7C62Fwow==
+  dependencies:
+    "@tanstack/query-core" "4.24.10"
+    use-sync-external-store "^1.2.0"
+
 "@testing-library/dom@^8.5.0":
   version "8.19.0"
   resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-8.19.0.tgz"
@@ -1812,6 +1825,21 @@
   version "1.1.2"
   resolved "https://registry.npmjs.org/@tootallnate/once/-/once-1.1.2.tgz"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
+
+"@trpc/client@^10.12.0":
+  version "10.12.0"
+  resolved "https://registry.yarnpkg.com/@trpc/client/-/client-10.12.0.tgz#635b02a2d10ffa07029428f250bcbe19b54a6b63"
+  integrity sha512-CUBRaE0FpYiRnPGkFB9oLD2cdFd5fSzQwPSR7/zXNKMjwdE+5P7q5mtgbh3bFey3lYidmpKDFgYRnl9Cz2Z7OQ==
+
+"@trpc/react-query@^10.12.0":
+  version "10.12.0"
+  resolved "https://registry.yarnpkg.com/@trpc/react-query/-/react-query-10.12.0.tgz#efca20783b4716d1fe514633b4e89e48643f7dea"
+  integrity sha512-f8RmXy8kPqel6nVLRykE3f7wk0dkVveGK+nyaO29jXViRPnTtn8HI94PaHZGEyqpi5VBcc+FGlMgk1ckkFNjQA==
+
+"@trpc/server@^10.12.0":
+  version "10.12.0"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-10.12.0.tgz#0293100080478ec724ab3c27a352ac5cc16285f4"
+  integrity sha512-gD5FCNCIDgx1fuYbCfFQgIYT1HVUzsXtQUrvG+nTLBL19eWJctwHetWYB2b71NmfLvq/b+QSH1OzPq1WvsHeag==
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
@@ -8855,6 +8883,11 @@ url-parse@^1.5.3:
   dependencies:
     querystringify "^2.1.1"
     requires-port "^1.0.0"
+
+use-sync-external-store@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
+  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
