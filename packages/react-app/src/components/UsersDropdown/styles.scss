@@ -9,7 +9,6 @@
   justify-content: space-between;
   overflow: hidden;
   width: calc(100% + 20px);
-  left: -15px;
   transition: ease height .3s;
   top: 47px;
   border-radius: 0 0 8px 8px;
@@ -18,7 +17,8 @@
   z-index: 1;
 
   &--active {
-    height: 100px;
+    height: 150px;
+    min-width: 180px;
     transition: ease height .3s;
     z-index: 1;
   }
@@ -38,7 +38,7 @@
     color: $almost_black;
     height: 50px;
     width: 100%;
-    padding: 0 20px 0 17px;
+    padding-left: 17px;
 
     &__avatar {
       width: 30px;

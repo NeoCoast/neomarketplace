@@ -1,43 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 import ProductForm from 'components/ProductForm';
+import EmptyState from 'components/EmptyState';
+
+import { ProductType } from 'types/product';
+import { products } from 'data/mockedData';
 
 import './styles.scss';
 
-type ProductType = {
-  name: string,
-  description: string,
-  price: number,
-  image?: File,
-}
-
 const EditProduct = () => {
-  const [product, setProduct] = useState<ProductType>();
-  const { id } = useParams();
+  const [product, setProduct] = useState<ProductType | null>();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { id: itemId } = useParams();
   const navigate = useNavigate();
+
   const handleSuccess = () => {
     navigate('/');
   };
 
   useEffect(() => {
-    const prod = {
-      name: 'Fini 300g',
-      description: 'Las mejores fini del estado',
-      price: 80,
-    };
-    setProduct(prod);
-  }, [id]);
+    setTimeout(() => { // TO DO: real backend request and add error handling
+      setProduct(products.find(({ id }) => id === Number(itemId)) || null);
+      setIsLoading(false);
+    }, 1000)
+  }, [itemId]);
+
+  if (isLoading) {
+    return (
+      <ClipLoader
+        className="App__loader"
+        size={70}
+        loading={!product}
+        color="#2C3A61"
+      />
+    );
+  }
 
   if (!product) {
-    return <p>Loading</p>;
+    return (
+      <EmptyState text='Item not found'/>
+    );
   }
 
   return (
     <ProductForm
       handleSuccess={handleSuccess}
-      isEdit
       product={product}
+      isEdit
     />
   );
 };

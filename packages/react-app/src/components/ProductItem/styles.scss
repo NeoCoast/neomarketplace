@@ -13,17 +13,20 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     min-width: 22%;
     width: 22%;
     max-width: 424px;
+    min-width: 230px;
     margin: 25px 1.5% 0 1.5%;
     border-radius: 8px;
-    box-shadow: 10px 10px 40px rgba(74, 96, 161, 0.2);
+    box-shadow: 10px 10px 40px $shadow;
     font-family: 'Inter', sans-serif;
     transition: all .2s ease-in-out;
+    align-items: center;
 
     &:hover {
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .09);
+      box-shadow: 0 0.5rem 1rem $transparent_black;
       transform: translateY(-0.5rem);
       cursor: pointer;
     }
@@ -32,12 +35,16 @@
   &__img {
     width: 100%;
     border-radius: 8px;
+    margin-top: 20px;
     max-height: 250px;
+    object-fit: contain;
   }
 
   &__body {
     display: flex;
+    width: 80%;
     padding: 28px;
+    padding-top: 5px;
     flex-direction: column;
   }
 
@@ -74,6 +81,9 @@
   &__name {
     display: flex;
     color: #363A3D;
+    max-width: 80%;
+    overflow: hidden;
+    white-space: pre-wrap;
 
     font: {
       size: 22px;

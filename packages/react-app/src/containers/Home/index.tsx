@@ -3,15 +3,15 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 import ProductList from 'components/ProductList';
 
-import { products } from '../../data/mockedData';
+import { products } from 'data/mockedData';
 
-import { Product } from '../../types/product';
+import { ProductType } from 'types/product';
 
 import './styles.scss';
 
 const Home = () => {
   const [loadingItems, setLoadingItems] = useState(false);
-  const [items, setItems] = useState<Product[]>([]);
+  const [items, setItems] = useState<ProductType[]>([]);
 
   useEffect(() => {
     try {
@@ -28,6 +28,7 @@ const Home = () => {
     return (
       <ClipLoader
         className="App__loader"
+        size={70}
         loading={loadingItems}
         color="#2C3A61"
       />

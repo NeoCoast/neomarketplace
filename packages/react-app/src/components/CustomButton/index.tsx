@@ -8,6 +8,7 @@ type ButtonProps = {
   onClick?: () => void,
   text: string,
   isPrimary?: boolean,
+  disabled?: boolean,
 }
 
 const CustomButton = ({
@@ -15,10 +16,15 @@ const CustomButton = ({
   onClick,
   text,
   isPrimary = false,
+  disabled = false,
 } : ButtonProps) => (
   <button
     onClick={onClick}
-    className={cn('button', { 'button--primary': isPrimary })}
+    className={cn('button', {
+      'button--primary': isPrimary,
+      'button--disabled': disabled,
+    })}
+    disabled={disabled}
   >
     {icon && (
       <img

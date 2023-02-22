@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 80%;
+  width: 70%;
   margin: auto;
   margin-top: 4vh;
   height: 80vh;
@@ -25,7 +25,7 @@
     align-items: center;
     height: 47px;
 
-    &__text {
+    &-text {
       font-size: 24px;
       font-weight: 700;
     }
@@ -40,12 +40,13 @@
 
     img {
       object-fit: cover;
-      width: 75vh;
+      width: 35vw;
       max-height: 75vh;
       margin-right: 30px;
+      transition: all 0.3s ease-in-out;
     }
 
-    &__seller {
+    &-seller {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -59,13 +60,13 @@
         margin-right: 7px;
       }
 
-      &__name {
+      &-name {
         font-size: 14px;
         color: $almost_black;
       }
     }
 
-    &__title {
+    &-title {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -75,7 +76,7 @@
       width: 100%;
     }
 
-    &__description {
+    &-description {
       color: $dark_gray;
       line-height: 25px;
       max-width: 35vw;
@@ -94,7 +95,7 @@
       }
     }
 
-    &__info {
+    &-info {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -102,14 +103,14 @@
       height: 100%;
     }
 
-    &__main {
+    &-main {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       text-align: left;
     }
 
-    &__details {
+    &-details {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -117,25 +118,25 @@
       text-align: left;
       width: 100%;
 
-      &__price {
+      &-price {
         font-size: 34px;
         font-weight: 600;
         color: $secondary;
         margin: 20px 0;
       }
 
-      &__date {
+      &-date {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
 
-        &__title {
+        &-title {
           font-size: 14px;
           color: $dark_gray;
           font-weight: 600;
         }
 
-        &__info {
+        &-info {
           font-size: 16px;
           color: $dark_gray;
           margin: 0;
@@ -143,11 +144,4 @@
       }
     }
   }
-}
-
-.loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }

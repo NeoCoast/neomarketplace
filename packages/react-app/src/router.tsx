@@ -23,9 +23,9 @@ import Layout from 'containers/Layout';
 import NewProduct from 'containers/NewProduct';
 import ItemView from 'containers/ItemView';
 import NotFound from 'containers/NotFound';
+import EditProduct from 'containers/EditProduct';
 
 import './index.scss';
-import EditProduct from 'containers/EditProduct';
 
 const Router = () => {
   const [selectedUser, setSelectedUser] = useState({
@@ -41,7 +41,7 @@ const Router = () => {
   );
 
   useEffect(() => {
-    setSelectedUser(users[0]); // TO DO: real backend request
+    setSelectedUser(users[3]); // TO DO: real backend request
 
     setUsersList(users);
   }, []);
