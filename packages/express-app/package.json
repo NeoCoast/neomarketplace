@@ -11,16 +11,17 @@
   "dependencies": {
     "@prisma/client": "^4.7.1",
     "@tanstack/react-query": "^4.20.4",
-    "@trpc/client": "^10.7.0",
+    "@trpc/client": "^10.12.0",
     "@trpc/next": "^10.7.0",
-    "@trpc/react-query": "^10.7.0",
-    "@trpc/server": "^10.7.0",
+    "@trpc/react-query": "^10.12.0",
+    "@trpc/server": "^10.12.0",
     "@types/cors": "^2.8.12",
     "express": "^4.18.2",
     "prisma": "^4.7.1",
     "ts-node": "^10.9.1",
     "superjson": "^1.12.1",
     "trpc": "^0.11.3",
+    "ts-node": "^10.9.1",
     "zod": "^3.20.2"
   },
   "devDependencies": {
