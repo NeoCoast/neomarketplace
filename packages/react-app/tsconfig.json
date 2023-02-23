@@ -20,7 +20,11 @@
     "isolatedModules": true,
     "noEmit": false,
     "jsx": "react-jsx",
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "paths": {
+      "@server/*" : ["../../express-app/*"],
+    }
+
   },
   "include": [
     "src",

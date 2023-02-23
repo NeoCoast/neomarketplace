@@ -1,10 +1,13 @@
 import express from 'express';
 import * as trpcExpress from '@trpc/server/adapters/express';
+import cors from 'cors';
 
 import { appRouter } from './routers/app';
 
 const app = express();
 const port = 3001;
+
+app.use(cors())
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");

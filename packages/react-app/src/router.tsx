@@ -26,7 +26,7 @@ import NewProduct from 'containers/NewProduct';
 import ItemView from 'containers/ItemView';
 import NotFound from 'containers/NotFound';
 import EditProduct from 'containers/EditProduct';
-import trpc from './utils/trpc';
+import trpc from 'utils/trpc';
 
 import './index.scss';
 
