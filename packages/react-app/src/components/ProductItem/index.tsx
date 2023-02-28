@@ -17,8 +17,8 @@ const ProductItem = ({
   image,
   msgsCount,
   price,
-  publicationDate,
-  seller,
+  createdAt,
+  owner,
   buyer,
 } : ProductType) => {
   const navigate = useNavigate();
@@ -28,8 +28,8 @@ const ProductItem = ({
   const [sellerImage, setSellerImage] = useState<string>('');
 
   useEffect(() => {
-    setSellerName(users.find(({ id }) => id === seller)?.name || '');
-    setSellerImage(users.find(({ id }) => id === seller)?.picture || '');
+    setSellerName(users.find(({ id }) => id === owner.id)?.name || '');
+    setSellerImage(users.find(({ id }) => id === owner.id)?.image || '');
   }, []);
 
   return (
@@ -58,7 +58,7 @@ const ProductItem = ({
           <span className="product-item__price">
             $ {price}
           </span>
-          <span className="product-item__date">{format(new Date(publicationDate), 'MM/dd/yyyy')}</span>
+          <span className="product-item__date">{format(new Date(createdAt), 'MM/dd/yyyy')}</span>
         </div>
         <div className="product-item__divider" />
         <div className="product-item__seller-container">

@@ -37,10 +37,10 @@ const ItemView = () => {
   const [error, setError] = useState('');
 
   const [item, setItem] = useState<ProductType | null>(null);
-  const [seller, setSeller] = useState<UserType | null>(null);
+  const [owner, setOwner] = useState<UserType | null>(null);
 
   const isSold = useMemo(() => (typeof item?.buyer === 'number'), [item?.buyer]);
-  const isOwner = useMemo(() => item?.seller === selectedUser.id, [item?.seller, selectedUser.id]);
+  const isOwner = useMemo(() => item?.owner.id === selectedUser.id, [item?.owner, selectedUser.id]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -55,8 +55,8 @@ const ItemView = () => {
   }, [itemId]);
 
   useEffect(() => {
-    setSeller(usersList.find(({ id }) => id === item?.seller) || null);
-  }, [item?.seller, usersList]);
+    setOwner(usersList.find(({ id }) => id === item?.owner.id) || null);
+  }, [item?.owner, usersList]);
 
   if (isLoading) {
     return (
@@ -102,8 +102,8 @@ const ItemView = () => {
             <img src={`data:image/jpeg;base64,${item?.image}`} alt="Item" />
             <div className="item-box__content-info">
               <div className="item-box__content-seller">
-                <img src={`data:image/jpeg;base64,${seller?.picture}`} alt="Seller Avatar" />
-                <p className="item-box__content-seller-name">{seller?.name}</p>
+                <img src={`data:image/jpeg;base64,${owner?.image}`} alt="Seller Avatar" />
+                <p className="item-box__content-seller-name">{owner?.name}</p>
               </div>
               <div className="item-box__content-main">
                 <p className="item-box__content-title">{item?.name}</p>
@@ -120,7 +120,7 @@ const ItemView = () => {
                 </p>
                 <div className="item-box__content-details-date">
                   <p className="item-box__content-details-date-title">published</p>
-                  <p className="item-box__content-details-date-info">{item?.publicationDate}</p>
+                  <p className="item-box__content-details-date-info">{item?.createdAt}</p>
                 </div>
               </div>
               {/* Comments area??? */}
