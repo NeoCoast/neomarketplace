@@ -31,7 +31,7 @@ const Router = () => {
   const [selectedUser, setSelectedUser] = useState({
     id: null,
     name: '',
-    picture: '',
+    image: '',
   } as UserType);
   const [usersList, setUsersList] = useState<UserType[]>([]);
 

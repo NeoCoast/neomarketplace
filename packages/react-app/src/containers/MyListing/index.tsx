@@ -19,7 +19,7 @@ const MyListing = () => {
 
   useEffect(() => {
     try {
-      setItems(products.filter(({ seller }) => seller === selectedUser.id));
+      setItems(products.filter(({ owner }) => owner.id === selectedUser.id));
     } finally {
       setTimeout(() => {
         setLoadingItems(false);

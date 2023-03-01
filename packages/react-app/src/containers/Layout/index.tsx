@@ -43,7 +43,7 @@ const Layout = () => {
           <div className="layout__header__user-container">
             <button onClick={() => setIsOpenUserMenu(!isOpenUserMenu)} className="layout__header__user">
               <img
-                src={`data:image/jpeg;base64,${selectedUser?.picture}`}
+                src={`data:image/jpeg;base64,${selectedUser?.image}`}
                 alt="User Avatar"
                 className="layout__header__user__avatar"
               />

@@ -3,10 +3,14 @@ import { Prisma, PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const getById = async (id: number) => {
-  const product = await prisma.user.findUnique({
+  const product = await prisma.product.findUnique({
     where: {
       id,
-    }
+    },
+    include: {
+      owner: true,
+      buyer: true,
+    },
   })
 
   return product;
