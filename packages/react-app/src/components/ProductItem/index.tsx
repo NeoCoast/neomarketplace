@@ -44,7 +44,7 @@ const ProductItem = ({
         <StatusTag
           text="Sold"
           isListing
-          isGreen={pathname === '/my-listing'}
+          isGreen={pathname === routes.myListing}
         />
       )}
       <img
