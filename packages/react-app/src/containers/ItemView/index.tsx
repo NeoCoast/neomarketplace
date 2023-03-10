@@ -32,6 +32,7 @@ const ItemView = () => {
   const [error, setError] = useState('');
 
   const productData = trpc.product.byId.useQuery({ id: Number(itemId) });
+  const mutation = trpc.product.buyProduct.useMutation();
 
   const item = productData.data;
 
@@ -55,6 +56,12 @@ const ItemView = () => {
     setError('Item not found');
   }
 
+  if (mutation.isSuccess) {
+    navigate('/my-purchased');
+  } else if (mutation.isError) {
+    setError(mutation.error?.message || 'Something went wrong');
+  }
+
   return (
     <div className="App">
       {error || !item ? (
@@ -75,8 +82,11 @@ const ItemView = () => {
 
                   if (isOwner) {
                     navigate(itemPath);
-                  } else { // ToDo: Add purchase logic
-                    console.log('Purchase Item');
+                  } else {
+                    mutation.mutate({
+                      productId: Number(itemId),
+                      buyerId: selectedUser?.id ?? 0,
+                    });
                   }
                 }}
               />

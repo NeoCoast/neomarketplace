@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient, Product } from "@prisma/client";
+import { Prisma, PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -21,9 +21,9 @@ export const getAll = async (filter?: string) => {
     where: {
       name: {
         contains: filter,
-        mode: "insensitive",
+        mode: 'insensitive',
       },
-      status: "Active",
+      status: 'Active',
     },
     include: {
       owner: true,
@@ -58,9 +58,9 @@ export const createProduct = async ({
   return createdProduct;
 };
 
-export const updateProdcut = async (
+export const updateProduct = async (
   id: number,
-  product: Prisma.ProductUpdateInput
+  product: Prisma.ProductUpdateInput,
 ) => {
   const updatedProduct = await prisma.product.update({
     where: {
@@ -70,4 +70,18 @@ export const updateProdcut = async (
   });
 
   return updatedProduct;
+};
+
+export const getAllMyPurchased = async (buyerId: number) => {
+  const products = await prisma.product.findMany({
+    where: {
+      status: 'Inactive',
+      buyerId,
+    },
+    include: {
+      owner: true,
+    },
+  });
+
+  return products;
 };
