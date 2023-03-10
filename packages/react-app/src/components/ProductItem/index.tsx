@@ -62,7 +62,7 @@ const ProductItem = ({
         <div className="product-item__seller-container">
           <div className="product-item__avatar-container">
             <img
-              src={defaultAvatar}
+              src={defaultAvatar} // TODO: add avatar
               alt="User Avatar"
               className="product-item__avatar"
             />
