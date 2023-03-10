@@ -3,6 +3,7 @@ import cn from 'classnames';
 
 import UserContext from 'context';
 import { UserType } from 'types/user';
+import { defaultAvatar } from 'data/mockedData';
 
 import './styles.scss';
 
@@ -33,7 +34,7 @@ const UsersDropdown = ({ isOpen, setIsOpen, usersList } : DropdownProps) => {
               className={cn('dropdown__user', { 'dropdown__user--border': index !== usersList.length - 1 })}
             >
               <img
-                src="data:image/jpeg;base64"
+                src={defaultAvatar} // ToDo: add avatar to user.
                 alt="User Avatar"
                 className="dropdown__user__avatar"
               />

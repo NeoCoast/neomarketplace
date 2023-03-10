@@ -1,5 +1,4 @@
 import React, {
-  useEffect,
   useState,
   useMemo,
   useContext,
@@ -11,10 +10,7 @@ import {
 } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 
-import { UserType } from 'types/user';
-import { ProductType } from 'types/product';
-
-import { products } from 'data/mockedData';
+import { defaultAvatar } from 'data/mockedData';
 
 import CustomButton from 'components/CustomButton';
 import StatusTag from 'components/StatusTag';
@@ -27,38 +23,23 @@ import UserContext from 'context';
 
 import './styles.scss';
 import routes from 'constants/routes';
+import trpc from 'utils/trpc';
 
 const ItemView = () => {
   const { id: itemId } = useParams();
-  const { selectedUser, usersList } = useContext(UserContext);
+  const { selectedUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const [item, setItem] = useState<ProductType | null>(null);
-  const [owner, setOwner] = useState<UserType | null>(null);
+  const productData = trpc.product.byId.useQuery({ id: Number(itemId) });
 
-  const isSold = useMemo(() => (typeof item?.buyer === 'number'), [item?.buyer]);
+  const item = productData.data;
+
+  const isSold = useMemo(() => (typeof item?.buyer?.id === 'number'), [item?.buyer?.id]);
   const isOwner = useMemo(() => item?.owner.id === selectedUser.id, [item?.owner, selectedUser.id]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      try {
-        setItem(products.find(({ id }) => id === Number(itemId)) || null);
-      } catch {
-        setError('Something went wrong getting item data');
-      } finally {
-        setIsLoading(false);
-      }
-    }, 1500);
-  }, [itemId]);
-
-  useEffect(() => {
-    setOwner(usersList.find(({ id }) => id === item?.owner.id) || null);
-  }, [item?.owner, usersList]);
-
-  if (isLoading) {
+  if (productData.isLoading) {
     return (
       <div>
         <ClipLoader
@@ -69,6 +50,10 @@ const ItemView = () => {
         />
       </div>
     );
+  }
+
+  if (productData.error) {
+    setError('Item not found');
   }
 
   return (
@@ -99,16 +84,16 @@ const ItemView = () => {
             )}
           </div>
           <div className="item-box__content">
-            <img src={`data:image/jpeg;base64,${item?.image}`} alt="Item" />
+            <img src={`data:image/jpeg;base64,${item.image}`} alt="Item" />
             <div className="item-box__content-info">
               <div className="item-box__content-seller">
-                <img src="data:image/jpeg;base64," alt="Seller Avatar" />
-                <p className="item-box__content-seller-name">{owner?.name}</p>
+                <img src={defaultAvatar} alt="Seller Avatar" /> {/* ToDo: Add seller avatar */}
+                <p className="item-box__content-seller-name">{item.owner.name}</p>
               </div>
               <div className="item-box__content-main">
-                <p className="item-box__content-title">{item?.name}</p>
+                <p className="item-box__content-title">{item.name}</p>
                 <div className="item-box__content-description">
-                  {item?.description}
+                  {item.description}
                 </div>
               </div>
               <div className="item-box__content-details">
@@ -120,7 +105,7 @@ const ItemView = () => {
                 </p>
                 <div className="item-box__content-details-date">
                   <p className="item-box__content-details-date-title">published</p>
-                  <p className="item-box__content-details-date-info">{item?.createdAt}</p>
+                  <p className="item-box__content-details-date-info">{item.createdAt}</p>
                 </div>
               </div>
               {/* Comments area??? */}

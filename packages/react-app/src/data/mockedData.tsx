@@ -140,6 +140,11 @@ export const users = [
     name: 'Gonzalo Sismondi',
     image: '',
   },
+  {
+    id: 4,
+    name: 'Juan Manuel Fernández',
+    image: '',
+  },
 ] as UserType[];
 
 export const defaultAvatar = 'https://i.imgur.com/8Km9tLL.png';
