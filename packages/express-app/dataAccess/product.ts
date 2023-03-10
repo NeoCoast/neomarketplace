@@ -16,6 +16,24 @@ export const getById = async (id: number) => {
   return product;
 };
 
+export const getAll = async (filter?: string) => {
+  const products = await prisma.product.findMany({
+    where: {
+      name: {
+        contains: filter,
+        mode: 'insensitive',
+      },
+      status: 'Active',
+    },
+    include: {
+      owner: true,
+      buyer: true,
+    },
+  })
+
+  return products;
+};
+
 export const deleteProduct = async (id: number) => {
   const product = await prisma.product.delete({
     where: {

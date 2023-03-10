@@ -11,7 +11,7 @@ import EmptyState from 'components/EmptyState';
 import './styles.scss';
 
 type ProductListProps = {
-  products?: ProductType[],
+  products: ProductType[] | any[] | undefined;
 }
 
 const ProductList = ({ products = [] } : ProductListProps) => {

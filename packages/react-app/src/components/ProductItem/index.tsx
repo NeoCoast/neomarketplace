@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 import MessagesIcon from 'assets/Msgs.svg';
 import routes from 'constants/routes';
 
-import { users } from 'data/mockedData';
+import { defaultAvatar } from 'data/mockedData';
 import { ProductType } from 'types/product';
 
 import './styles.scss';
@@ -25,11 +25,9 @@ const ProductItem = ({
   const { pathname } = useLocation();
 
   const [sellerName, setSellerName] = useState<string>('');
-  const [sellerImage, setSellerImage] = useState<string>('');
 
   useEffect(() => {
-    setSellerName(users.find(({ id }) => id === owner.id)?.name || '');
-    setSellerImage(users.find(({ id }) => id === owner.id)?.image || '');
+    setSellerName(owner.name);
   }, []);
 
   return (
@@ -64,7 +62,7 @@ const ProductItem = ({
         <div className="product-item__seller-container">
           <div className="product-item__avatar-container">
             <img
-              src={`data:image/jpeg;base64,${sellerImage}`}
+              src={defaultAvatar}
               alt="User Avatar"
               className="product-item__avatar"
             />
