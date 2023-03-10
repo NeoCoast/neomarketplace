@@ -8,6 +8,6 @@ export type ProductType = {
   price: number,
   createdAt: string,
   owner: UserType,
-  buyer?: number,
-  msgsCount: number,
+  buyer?: UserType,
+  msgsCount?: number,
 };

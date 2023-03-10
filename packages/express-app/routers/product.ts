@@ -1,7 +1,7 @@
 import { router, publicProcedure } from '../trpc';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
-import { getById } from '../dataAccess/product';
+import { getAll, getById } from '../dataAccess/product';
 
 export const productRouter = router({
   byId: publicProcedure.
@@ -19,6 +19,23 @@ export const productRouter = router({
         });
       }
       return product;
-  })
+  }),
+  getAll: publicProcedure
+    .input(z.object({
+      name: z.string().optional(),
+    }),
+    ).query(async ({ input }) => {
+      const { name } = input;
+      const products = await getAll(name);
+
+      if (!products.length) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: `No products found`,
+        });
+      }
+
+    return products;
+  }),
   //ToDo add other querys/mutations
 });

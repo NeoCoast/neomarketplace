@@ -102,7 +102,7 @@ const ItemView = () => {
             <img src={`data:image/jpeg;base64,${item?.image}`} alt="Item" />
             <div className="item-box__content-info">
               <div className="item-box__content-seller">
-                <img src={`data:image/jpeg;base64,${owner?.image}`} alt="Seller Avatar" />
+                <img src="data:image/jpeg;base64," alt="Seller Avatar" />
                 <p className="item-box__content-seller-name">{owner?.name}</p>
               </div>
               <div className="item-box__content-main">

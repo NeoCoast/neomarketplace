@@ -19,7 +19,7 @@ const UsersDropdown = ({ isOpen, setIsOpen, usersList } : DropdownProps) => {
     <div className={cn('dropdown', { 'dropdown--active': isOpen })}>
       <div className="dropdown__list">
         {usersList.filter(({ id }) => id !== selectedUser.id)
-          .map(({ name, image, id }, index) => (
+          .map(({ name, id }, index) => (
             <button
               key={id}
               onClick={() => {
@@ -28,13 +28,12 @@ const UsersDropdown = ({ isOpen, setIsOpen, usersList } : DropdownProps) => {
                 setTimeout(() => setSelectedUser({
                   id,
                   name,
-                  image,
                 }), 200);
               }}
               className={cn('dropdown__user', { 'dropdown__user--border': index !== usersList.length - 1 })}
             >
               <img
-                src={`data:image/jpeg;base64,${image}`}
+                src="data:image/jpeg;base64"
                 alt="User Avatar"
                 className="dropdown__user__avatar"
               />

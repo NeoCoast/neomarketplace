@@ -20,7 +20,7 @@ const MyPurchased = () => {
   useEffect(() => {
     try {
       setLoadingItems(true);
-      setItems(products.filter(({ buyer }) => buyer === selectedUser.id));
+      setItems(products.filter(({ buyer }) => buyer?.id === selectedUser.id));
     } finally {
       setTimeout(() => {
         setLoadingItems(false);

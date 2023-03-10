@@ -15,6 +15,7 @@ import UserContext from 'context';
 import routes from 'constants/routes';
 
 import './styles.scss';
+import { defaultAvatar } from 'data/mockedData';
 
 const Layout = () => {
   const [isOpenUserMenu, setIsOpenUserMenu] = useState(false);
@@ -43,7 +44,7 @@ const Layout = () => {
           <div className="layout__header__user-container">
             <button onClick={() => setIsOpenUserMenu(!isOpenUserMenu)} className="layout__header__user">
               <img
-                src={`data:image/jpeg;base64,${selectedUser?.image}`}
+                src={defaultAvatar}
                 alt="User Avatar"
                 className="layout__header__user__avatar"
               />

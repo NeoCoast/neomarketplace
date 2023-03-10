@@ -1,41 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import ProductList from 'components/ProductList';
 
-import { products } from 'data/mockedData';
-
-import { ProductType } from 'types/product';
+// import { ProductType } from 'types/product';
 
 import './styles.scss';
+import trpc from 'utils/trpc';
 
 const Home = () => {
-  const [loadingItems, setLoadingItems] = useState(false);
-  const [items, setItems] = useState<ProductType[]>([]);
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const name = urlParams.get('name');
 
-  useEffect(() => {
-    try {
-      setLoadingItems(true);
-      setItems(products);
-    } finally {
-      setTimeout(() => {
-        setLoadingItems(false);
-      }, 2000); // ToDo.
-    }
-  }, []);
+  const products = trpc.product.getAll.useQuery({ name: name || '' });
 
-  if (loadingItems) {
+  if (products.isLoading) {
     return (
       <ClipLoader
         className="App__loader"
         size={70}
-        loading={loadingItems}
+        loading={products.isLoading}
         color="#2C3A61"
       />
     );
   }
 
-  if (!items.length) { // ToDo: Add empty state.
+  if (!products) {
     return (
       <div>
         No products available.
@@ -45,7 +36,7 @@ const Home = () => {
 
   return (
     <div className="App">
-      <ProductList products={items} />
+      <ProductList products={products.data} />
     </div>
   );
 };
