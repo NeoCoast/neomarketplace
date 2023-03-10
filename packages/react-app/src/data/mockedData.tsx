@@ -1,5 +1,5 @@
-import { ProductType } from 'types/product';
-import { UserType } from 'types/user';
+import { ProductType } from '@server/types/product';
+import { UserType } from '@server/types/user';
 
 export const products = [
   {

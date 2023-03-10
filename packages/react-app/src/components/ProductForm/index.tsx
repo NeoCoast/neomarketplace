@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import cn from 'classnames';
 
-import { ProductType } from 'types/product';
+import { ProductType } from '@server/types/product';
 
 import backgroundImage from 'assets/ProductFormBackImage.png';
 import CustomButton from 'components/CustomButton';

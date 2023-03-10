@@ -6,7 +6,7 @@ import MessagesIcon from 'assets/Msgs.svg';
 import routes from 'constants/routes';
 
 import { users } from 'data/mockedData';
-import { ProductType } from 'types/product';
+import { ProductType } from '@server/types/product';
 
 import './styles.scss';
 import StatusTag from 'components/StatusTag';

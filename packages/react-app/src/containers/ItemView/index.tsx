@@ -11,8 +11,8 @@ import {
 } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 
-import { UserType } from 'types/user';
-import { ProductType } from 'types/product';
+import { UserType } from '@server/types/user';
+import { ProductType } from '@server/types/product';
 
 import { products } from 'data/mockedData';
 

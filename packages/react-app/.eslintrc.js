@@ -22,12 +22,12 @@ module.exports = {
     },
     ecmaVersion: 'latest',
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-  ],
+  plugins: ['react', '@typescript-eslint'],
   rules: {
-    'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.js', '.jsx'] }],
+    'react/jsx-filename-extension': [
+      1,
+      { extensions: ['.tsx', '.js', '.jsx'] },
+    ],
     'react/function-component-definition': [
       2,
       {
@@ -63,7 +63,13 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        moduleDirectory: ['src', 'node_modules'],
+        moduleDirectory: [
+          'src',
+          'node_modules',
+        ],
+      },
+      alias: {
+        '@server': '../../express-app/src',
       },
       typescript: {},
     },

@@ -5,7 +5,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import ProductForm from 'components/ProductForm';
 import EmptyState from 'components/EmptyState';
 
-import { ProductType } from 'types/product';
+import { ProductType } from '@server/types/product';
 import { products } from 'data/mockedData';
 
 import './styles.scss';

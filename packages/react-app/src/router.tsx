@@ -9,7 +9,7 @@ import {
   BrowserRouter,
 } from 'react-router-dom';
 
-import { UserType } from 'types/user';
+import { UserType } from '@server/types/user';
 import { users } from 'data/mockedData';
 
 import UserContext from 'context';

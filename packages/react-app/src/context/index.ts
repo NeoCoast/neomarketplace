@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from 'react';
-import { UserType } from 'types/user';
+import { UserType } from '@server/types/user';
 
 type userContextType = {
   selectedUser: UserType;

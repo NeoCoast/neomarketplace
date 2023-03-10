@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import cn from 'classnames';
 
 import UserContext from 'context';
-import { UserType } from 'types/user';
+import { UserType } from '@server/types/user';
 
 import './styles.scss';
 

@@ -7,7 +7,7 @@ import TitleImage from 'assets/title-banner.png';
 import ProductList from 'components/ProductList';
 
 import { products } from 'data/mockedData';
-import { ProductType } from 'types/product';
+import { ProductType } from '@server/types/product';
 
 import './styles.scss';
 

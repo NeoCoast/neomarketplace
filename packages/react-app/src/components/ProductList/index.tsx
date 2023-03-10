@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { ProductType } from 'types/product';
+import { ProductType } from '@server/types/product';
 import routes from 'constants/routes';
 
 import CustomButton from 'components/CustomButton';
