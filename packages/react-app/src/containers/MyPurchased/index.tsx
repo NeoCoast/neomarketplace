@@ -1,39 +1,27 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import UserContext from 'context';
 
 import TitleImage from 'assets/title-banner.png';
 import ProductList from 'components/ProductList';
-
-import { products } from 'data/mockedData';
-import { ProductType } from 'types/product';
+import trpc from 'utils/trpc';
 
 import './styles.scss';
 
 const MyPurchased = () => {
   const { selectedUser } = useContext(UserContext);
 
-  const [loadingItems, setLoadingItems] = useState(false);
-  const [items, setItems] = useState<ProductType[]>([]);
+  const items = trpc.product.getMyPurchasedProducts.useQuery({
+    buyerId: selectedUser?.id ?? 0,
+  });
 
-  useEffect(() => {
-    try {
-      setLoadingItems(true);
-      setItems(products.filter(({ buyer }) => buyer?.id === selectedUser.id));
-    } finally {
-      setTimeout(() => {
-        setLoadingItems(false);
-      }, 2000); // ToDo.
-    }
-  }, [selectedUser]);
-
-  if (loadingItems) {
+  if (items.isLoading) {
     return (
       <ClipLoader
         className="App__loader"
         size={70}
-        loading={loadingItems}
+        loading={items.isLoading}
         color="#2C3A61"
       />
     );
@@ -47,7 +35,7 @@ const MyPurchased = () => {
           <span className="my-purchased__title">My Purchased</span>
         </div>
 
-        <ProductList products={items} />
+        <ProductList products={items.data} />
       </div>
     </div>
   );

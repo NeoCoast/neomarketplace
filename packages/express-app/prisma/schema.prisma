@@ -3,6 +3,8 @@
 
 generator client {
   provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
+
 }
 
 datasource db {
@@ -16,7 +18,7 @@ model User {
   password String
   name  String
   products Product[] @relation("owner")
-  product Product? @relation("buyer")
+  productPurchased Product[] @relation("buyer")
 }
 
 model Product {
@@ -29,7 +31,7 @@ model Product {
   owner User @relation("owner", fields: [userId], references: [id])
   userId Int
   buyer User? @relation("buyer", fields: [buyerId], references: [id])
-  buyerId Int? @unique
+  buyerId Int?
   createdAt  DateTime   @default(now())
   lastUpdated  DateTime   @default(now())
   comments String[]
@@ -40,3 +42,4 @@ enum ProductStatus {
   Inactive
   Purchased
 }
+

@@ -1,5 +1,3 @@
-
-
 import { productRouter } from './product';
 import { router } from '../trpc';
 

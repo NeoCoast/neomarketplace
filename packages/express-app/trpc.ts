@@ -1,17 +1,13 @@
 import { inferAsyncReturnType, initTRPC } from '@trpc/server';
-import * as trpcExpress from '@trpc/server/adapters/express';
 
-const createContext = ({
-  req,
-  res,
-}: trpcExpress.CreateExpressContextOptions) => {
-
-  return { };
-};
+const createContext = () => ({
+  // ... your context here
+  // e.g. db connection, session, etc
+});
 type Context = inferAsyncReturnType<typeof createContext>;
 
 const t = initTRPC.context<Context>().create();
 
-export const router = t.router;
+export const { router } = t;
 
 export const publicProcedure = t.procedure;
