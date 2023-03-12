@@ -11,13 +11,13 @@ import './styles.scss';
 type ProductFormType = {
   product?: ProductType,
   isEdit?: boolean,
-  handleSuccess: () => void,
+  handleSave: (product: Partial<ProductType>) => void,
 }
 
 const ProductForm = ({
   product,
   isEdit = false,
-  handleSuccess,
+  handleSave,
 } : ProductFormType) => {
   const {
     name = '',
@@ -42,9 +42,7 @@ const ProductForm = ({
       image: productImage,
     };
 
-    // Todo: Add trpc Create or Edit call!
-    console.log(`This is a${!isEdit ? ' new product' : 'n updated product'}:`, currentProduct);
-    handleSuccess();
+    handleSave(currentProduct);
   };
 
   const convertBase64 = (file: File) => new Promise((resolve, reject) => {
@@ -128,7 +126,6 @@ const ProductForm = ({
           <CustomButton
             disabled={disabledForm}
             text={buttonLabel}
-            onClick={handleSuccess}
           />
         </div>
       </form>
