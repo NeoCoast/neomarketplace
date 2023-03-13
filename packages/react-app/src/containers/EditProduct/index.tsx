@@ -25,7 +25,7 @@ const EditProduct = () => {
     setTimeout(() => { // TO DO: real backend request and add error handling
       setProduct(products.find(({ id }) => id === Number(itemId)) || null);
       setIsLoading(false);
-    }, 1000)
+    }, 1000);
   }, [itemId]);
 
   if (isLoading) {
@@ -41,13 +41,13 @@ const EditProduct = () => {
 
   if (!product) {
     return (
-      <EmptyState text='Item not found'/>
+      <EmptyState text="Item not found" />
     );
   }
 
   return (
     <ProductForm
-      handleSuccess={handleSuccess}
+      handleSave={handleSuccess}
       product={product}
       isEdit
     />
