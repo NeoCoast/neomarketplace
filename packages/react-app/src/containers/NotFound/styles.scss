@@ -1,3 +1,38 @@
 .App {
   text-align: center;
 }
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px;
+    width: 160px;
+    color: #fff;
+    margin-top: 15px;
+    border-color: #2C3A61;
+    background: #2C3A61;
+    box-shadow: none;
+    outline: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 200ms ease-out all;
+    border: 0;
+
+    span {
+      padding-left: 5px;
+    }
+
+    &:hover {
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.3);
+      transform: translateY(-4px);
+    }
+  }
+}
