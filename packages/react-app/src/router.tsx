@@ -2,6 +2,7 @@ import React, {
   useEffect,
   useMemo,
   useState,
+  useCallback,
 } from 'react';
 import {
   Routes,
@@ -9,14 +10,14 @@ import {
   BrowserRouter,
 } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { httpBatchLink } from '@trpc/client';
+import { httpBatchLink, createTRPCProxyClient } from '@trpc/client';
 
 import { UserType } from 'types/user';
-import { users } from 'data/mockedData';
 
 import UserContext from 'context';
 
 import routes from 'constants/routes';
+import type { AppRouter } from '@server/routers/app';
 
 import Home from 'containers/Home';
 import MyPurchased from 'containers/MyPurchased';
@@ -46,16 +47,29 @@ const Router = () => {
     ],
   }));
 
+  const client = createTRPCProxyClient<AppRouter>(
+    {
+      links: [
+        httpBatchLink({ url: 'http://localhost:3001/trpc' }),
+      ],
+    },
+  );
+
   const contextValue = useMemo(
     () => ({ selectedUser, setSelectedUser, usersList }),
     [selectedUser, usersList],
   );
 
-  useEffect(() => {
-    setSelectedUser(users[1]); // TO DO: real backend request
+  const getUsersCall = useCallback(async () => {
+    const users = await client.user.getAll.query();
 
+    setSelectedUser(users?.[1]);
     setUsersList(users);
   }, []);
+
+  useEffect(() => {
+    getUsersCall();
+  }, [getUsersCall]);
 
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
