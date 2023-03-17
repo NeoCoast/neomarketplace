@@ -1,8 +1,9 @@
 import React, { useState, ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import { httpBatchLink } from '@trpc/client';
 
 import trpc from 'utils/trpc';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 type AppProps = { children : ReactNode }
 

@@ -1,7 +1,6 @@
-
-
 import { productRouter } from './product';
 import { userRouter } from './user';
+
 import { router } from '../trpc';
 
 // root router to call

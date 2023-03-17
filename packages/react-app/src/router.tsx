@@ -24,8 +24,9 @@ import ItemView from 'containers/ItemView';
 import NotFound from 'containers/NotFound';
 import EditProduct from 'containers/EditProduct';
 
-import './index.scss';
 import trpc from 'utils/trpc';
+
+import './index.scss';
 
 const Router = () => {
   const [selectedUser, setSelectedUser] = useState({
@@ -76,7 +77,6 @@ const Router = () => {
             <Route path={routes.item} element={<ItemView />} />
 
             <Route path="*" element={<NotFound />} />
-            {/* TODO: mejorar not found screen */}
             <Route path={routes.myPurchased} element={<MyPurchased />} />
             <Route path={routes.myListing} element={<MyListing />} />
             <Route path={routes.newProduct} index element={<NewProduct />} />
