@@ -1,6 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
+import App from 'containers/App';
 import Router from './router';
 
 const root = createRoot(
@@ -8,5 +9,7 @@ const root = createRoot(
 );
 
 root.render(
-  <Router />,
+  <App>
+    <Router />
+  </App>,
 );

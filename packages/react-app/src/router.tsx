@@ -1,5 +1,4 @@
 import React, {
-  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -8,11 +7,9 @@ import {
   Route,
   BrowserRouter,
 } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { httpBatchLink } from '@trpc/client';
+import { ClipLoader } from 'react-spinners';
 
 import { UserType } from 'types/user';
-import { users } from 'data/mockedData';
 
 import UserContext from 'context';
 
@@ -26,6 +23,7 @@ import NewProduct from 'containers/NewProduct';
 import ItemView from 'containers/ItemView';
 import NotFound from 'containers/NotFound';
 import EditProduct from 'containers/EditProduct';
+
 import trpc from 'utils/trpc';
 
 import './index.scss';
@@ -36,49 +34,57 @@ const Router = () => {
     name: '',
     image: '',
   } as UserType);
-  const [usersList, setUsersList] = useState<UserType[]>([]);
-  const [queryClient] = useState(() => new QueryClient());
-  const [trpcClient] = useState(() => trpc.createClient({
-    links: [
-      httpBatchLink({
-        url: 'http://localhost:3001/trpc',
-      }),
-    ],
-  }));
+
+  const usersData = trpc.user.getAll.useQuery();
 
   const contextValue = useMemo(
-    () => ({ selectedUser, setSelectedUser, usersList }),
-    [selectedUser, usersList],
+    () => ({ selectedUser, setSelectedUser, usersList: usersData.isSuccess ? usersData.data : [] }),
+    [selectedUser, usersData.isSuccess],
   );
 
-  useEffect(() => {
-    setSelectedUser(users[1]); // TO DO: real backend request
+  if (usersData.isLoading) {
+    return (
+      <ClipLoader
+        className="App__loader"
+        size={70}
+        loading={usersData.isLoading}
+        color="#2C3A61"
+      />
+    );
+  }
 
-    setUsersList(users);
-  }, []);
+  if (usersData.isError) {
+    // TODO: mejorar error screen
+    return (
+      <div>
+        Error loading users.
+      </div>
+    );
+  }
+
+  if (usersData.isSuccess && !selectedUser.id) {
+    const user = usersData.data[0];
+
+    setSelectedUser(user);
+  }
 
   return (
-    <trpc.Provider client={trpcClient} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <UserContext.Provider value={contextValue}>
-            <Routes>
-              <Route path={routes.home} element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path={routes.item} element={<ItemView />} />
+    <BrowserRouter>
+      <UserContext.Provider value={contextValue}>
+        <Routes>
+          <Route path={routes.home} element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path={routes.item} element={<ItemView />} />
 
-                <Route path="*" element={<NotFound />} />
-                {/* TODO: mejorar not found screen */}
-                <Route path={routes.myPurchased} element={<MyPurchased />} />
-                <Route path={routes.myListing} element={<MyListing />} />
-                <Route path={routes.newProduct} index element={<NewProduct />} />
-                <Route path={routes.editProduct} index element={<EditProduct />} />
-              </Route>
-            </Routes>
-          </UserContext.Provider>
-        </BrowserRouter>
-      </QueryClientProvider>
-    </trpc.Provider>
+            <Route path="*" element={<NotFound />} />
+            <Route path={routes.myPurchased} element={<MyPurchased />} />
+            <Route path={routes.myListing} element={<MyListing />} />
+            <Route path={routes.newProduct} index element={<NewProduct />} />
+            <Route path={routes.editProduct} index element={<EditProduct />} />
+          </Route>
+        </Routes>
+      </UserContext.Provider>
+    </BrowserRouter>
   );
 };
 

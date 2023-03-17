@@ -11,19 +11,18 @@ import {
 import ClipLoader from 'react-spinners/ClipLoader';
 
 import { defaultAvatar } from 'data/mockedData';
+import routes from 'constants/routes';
+import trpc from 'utils/trpc';
+import EditIcon from 'assets/EditIcon.svg';
+import CartIcon from 'assets/CartIcon.svg';
 
 import CustomButton from 'components/CustomButton';
 import StatusTag from 'components/StatusTag';
 import EmptyState from 'components/EmptyState';
 
-import EditIcon from 'assets/EditIcon.svg';
-import CartIcon from 'assets/CartIcon.svg';
-
 import UserContext from 'context';
 
 import './styles.scss';
-import routes from 'constants/routes';
-import trpc from 'utils/trpc';
 
 const ItemView = () => {
   const { id: itemId } = useParams();

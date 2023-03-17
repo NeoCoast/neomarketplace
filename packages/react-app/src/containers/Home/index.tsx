@@ -5,8 +5,9 @@ import ProductList from 'components/ProductList';
 
 // import { ProductType } from 'types/product';
 
-import './styles.scss';
 import trpc from 'utils/trpc';
+
+import './styles.scss';
 
 const Home = () => {
   const queryString = window.location.search;
