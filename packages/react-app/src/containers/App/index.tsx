@@ -12,7 +12,7 @@ const App = ({ children } : AppProps) => {
   const [trpcClient] = useState(() => trpc.createClient({
     links: [
       httpBatchLink({
-        url: 'http://localhost:3001/trpc',
+        url: process.env.REACT_APP_API_BASE_URL || '',
       }),
     ],
   }));

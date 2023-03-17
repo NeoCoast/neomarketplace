@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import ProductForm from 'components/ProductForm';
 
 import trpc from 'utils/trpc';
+import { ProductType } from 'types/product';
 
 import './styles.scss';
-import { ProductType } from 'types/product';
 
 const NewProduct = () => {
   const navigate = useNavigate();

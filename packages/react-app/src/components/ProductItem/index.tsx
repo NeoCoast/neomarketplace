@@ -4,12 +4,12 @@ import { format } from 'date-fns';
 
 import MessagesIcon from 'assets/Msgs.svg';
 import routes from 'constants/routes';
-
 import { defaultAvatar } from 'data/mockedData';
 import { ProductType } from 'types/product';
 
-import './styles.scss';
 import StatusTag from 'components/StatusTag';
+
+import './styles.scss';
 
 const ProductItem = ({
   id: productId,

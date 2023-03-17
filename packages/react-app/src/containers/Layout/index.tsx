@@ -5,17 +5,16 @@ import React, {
 import { useNavigate, Outlet } from 'react-router-dom';
 import cn from 'classnames';
 
-import UsersDropdown from 'components/UsersDropdown';
-
 import Arrow from 'assets/Arrow.svg';
 import NeoMarketplace from 'assets/NeoMarketplace.svg';
+import routes from 'constants/routes';
+import { defaultAvatar } from 'data/mockedData';
+
+import UsersDropdown from 'components/UsersDropdown';
 
 import UserContext from 'context';
 
-import routes from 'constants/routes';
-
 import './styles.scss';
-import { defaultAvatar } from 'data/mockedData';
 
 const Layout = () => {
   const [isOpenUserMenu, setIsOpenUserMenu] = useState(false);
