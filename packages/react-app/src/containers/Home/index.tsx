@@ -3,7 +3,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 import ProductList from 'components/ProductList';
 
-// import { ProductType } from 'types/product';
+import { ProductType } from 'types/product';
 
 import trpc from 'utils/trpc';
 
@@ -37,7 +37,7 @@ const Home = () => {
 
   return (
     <div className="App">
-      <ProductList products={products.data} />
+      <ProductList products={products.data as ProductType[]} />
     </div>
   );
 };

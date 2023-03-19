@@ -9,6 +9,7 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
+import { format } from 'date-fns';
 
 import { defaultAvatar } from 'data/mockedData';
 import routes from 'constants/routes';
@@ -62,6 +63,8 @@ const ItemView = () => {
     setError(mutation.error?.message || 'Something went wrong');
   }
 
+  const creationDate = format(new Date(item?.createdAt || ''), 'eee dd MMM yyyy');
+
   return (
     <div className="App">
       {error || !item ? (
@@ -70,7 +73,7 @@ const ItemView = () => {
         <div className="item-box">
           <div className="item-box__title">
             <p className="item-box__title-text">{item?.name}</p>
-            {isSold && !isOwner ? (
+            {isSold ? (
               <StatusTag text="Sold" />
             ) : (
               <CustomButton
@@ -114,7 +117,7 @@ const ItemView = () => {
                 </p>
                 <div className="item-box__content-details-date">
                   <p className="item-box__content-details-date-title">published</p>
-                  <p className="item-box__content-details-date-info">{item.createdAt}</p>
+                  <p className="item-box__content-details-date-info">{creationDate.toString()}</p>
                 </div>
               </div>
               {/* Comments area??? */}

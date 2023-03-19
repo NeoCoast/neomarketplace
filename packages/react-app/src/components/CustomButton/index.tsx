@@ -1,6 +1,8 @@
 import React from 'react';
 import cn from 'classnames';
 
+import { ClipLoader } from 'react-spinners';
+
 import './styles.scss';
 
 type ButtonProps = {
@@ -8,6 +10,7 @@ type ButtonProps = {
   onClick?: () => void,
   text: string,
   isPrimary?: boolean,
+  isLoading?: boolean,
   disabled?: boolean,
 }
 
@@ -17,6 +20,7 @@ const CustomButton = ({
   text,
   isPrimary = false,
   disabled = false,
+  isLoading = false,
 } : ButtonProps) => (
   <button
     onClick={onClick}
@@ -33,7 +37,14 @@ const CustomButton = ({
         className="button__icon"
       />
     )}
-    <p className="button__text">{text}</p>
+    {isLoading
+      ? (
+        <ClipLoader
+          size={20}
+          color="white"
+        />
+      )
+      : <p className="button__text">{text}</p>}
   </button>
 );
 
