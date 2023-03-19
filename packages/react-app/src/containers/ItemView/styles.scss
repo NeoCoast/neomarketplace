@@ -39,7 +39,7 @@
     height: 80%;
 
     img {
-      object-fit: cover;
+      object-fit: contain;
       width: 35vw;
       max-height: 75vh;
       margin-right: 30px;
@@ -121,7 +121,7 @@
         font-size: 34px;
         font-weight: 600;
         color: $secondary;
-        margin: 20px 0;
+        margin: 10px 0 0 0;
       }
 
       &-date {

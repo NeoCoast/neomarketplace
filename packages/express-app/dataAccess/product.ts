@@ -85,3 +85,16 @@ export const getAllMyPurchased = async (buyerId: number) => {
 
   return products;
 };
+
+export const getMyListing = async (userId: number) => {
+  const products = await prisma.product.findMany({
+    where: {
+      userId,
+    },
+    include: {
+      owner: true,
+    },
+  });
+
+  return products;
+};

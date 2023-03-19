@@ -7,6 +7,7 @@ import {
   getAllMyPurchased,
   getById,
   updateProduct,
+  getMyListing,
 } from '../dataAccess/product';
 
 import { router, publicProcedure } from '../trpc';
@@ -116,6 +117,24 @@ export const productRouter = router({
 
       return products;
     }),
+  getMyListing: publicProcedure
+    .input(
+      z.object({
+        userId: z.number(),
+      }),
+    )
+    .query(async ({ input: { userId } }) => {
+      const products = await getMyListing(userId);
+
+      if (!products.length) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'No products found',
+        });
+      }
+
+      return products;
+    }),
   editProduct: publicProcedure
     .input(
       z.object({
@@ -138,7 +157,7 @@ export const productRouter = router({
         });
       }
 
-      product = { ...product, ...newProductData }
+      product = { ...product, ...newProductData };
 
       const { owner, buyer, ...updatedProduct } = product;
 
