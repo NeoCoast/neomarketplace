@@ -8,7 +8,6 @@ import cn from 'classnames';
 import Arrow from 'assets/Arrow.svg';
 import NeoMarketplace from 'assets/NeoMarketplace.svg';
 import routes from 'constants/routes';
-import { defaultAvatar } from 'data/mockedData';
 
 import UsersDropdown from 'components/UsersDropdown';
 
@@ -43,7 +42,7 @@ const Layout = () => {
           <div className="layout__header__user-container">
             <button onClick={() => setIsOpenUserMenu(!isOpenUserMenu)} className="layout__header__user">
               <img
-                src={defaultAvatar} // todo: add user avatar
+                src={`data:image/jpeg;base64,${selectedUser?.avatar}`}
                 alt="User Avatar"
                 className="layout__header__user__avatar"
               />

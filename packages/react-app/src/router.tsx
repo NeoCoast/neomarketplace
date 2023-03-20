@@ -30,9 +30,9 @@ import './index.scss';
 
 const Router = () => {
   const [selectedUser, setSelectedUser] = useState({
+    avatar: '',
     id: null,
     name: '',
-    image: '',
   } as UserType);
 
   const usersData = trpc.user.getAll.useQuery();

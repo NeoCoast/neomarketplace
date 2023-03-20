@@ -11,7 +11,7 @@ export default createContext({
   selectedUser: {
     id: null,
     name: '',
-    image: '',
+    avatar: '',
   },
   setSelectedUser: () => {},
   usersList: [],

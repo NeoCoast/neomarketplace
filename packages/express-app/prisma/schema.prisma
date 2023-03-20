@@ -19,6 +19,7 @@ model User {
   name  String
   products Product[] @relation("owner")
   productPurchased Product[] @relation("buyer")
+  avatar String
 }
 
 model Product {

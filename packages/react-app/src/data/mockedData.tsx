@@ -138,12 +138,10 @@ export const users = [
   {
     id: 3,
     name: 'Gonzalo Sismondi',
-    image: '',
   },
   {
     id: 4,
     name: 'Juan Manuel Fernández',
-    image: '',
   },
 ] as UserType[];
 

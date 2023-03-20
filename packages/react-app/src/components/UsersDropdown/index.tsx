@@ -3,7 +3,6 @@ import cn from 'classnames';
 
 import UserContext from 'context';
 import { UserType } from 'types/user';
-import { defaultAvatar } from 'data/mockedData';
 
 import './styles.scss';
 
@@ -20,13 +19,14 @@ const UsersDropdown = ({ isOpen, setIsOpen, usersList } : DropdownProps) => {
     <div className={cn('dropdown', { 'dropdown--active': isOpen })}>
       <div className="dropdown__list">
         {usersList.filter(({ id }) => id !== selectedUser.id)
-          .map(({ name, id }, index) => (
+          .map(({ avatar, name, id }, index) => (
             <button
               key={id}
               onClick={() => {
                 setIsOpen(false);
 
                 setTimeout(() => setSelectedUser({
+                  avatar,
                   id,
                   name,
                 }), 200);
@@ -34,7 +34,7 @@ const UsersDropdown = ({ isOpen, setIsOpen, usersList } : DropdownProps) => {
               className={cn('dropdown__user', { 'dropdown__user--border': index !== usersList.length - 1 })}
             >
               <img
-                src={defaultAvatar} // ToDo: add avatar to user.
+                src={`data:image/jpeg;base64,${avatar}`}
                 alt="User Avatar"
                 className="dropdown__user__avatar"
               />
