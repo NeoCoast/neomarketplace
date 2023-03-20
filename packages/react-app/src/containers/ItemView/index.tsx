@@ -120,7 +120,6 @@ const ItemView = () => {
                   <p className="item-box__content-details-date-info">{creationDate.toString()}</p>
                 </div>
               </div>
-              {/* Comments area??? */}
             </div>
           </div>
         </div>
