@@ -33,7 +33,7 @@ const ProductForm = ({
   const [productName, setProductName] = useState<string>(name);
   const [productDescription, setProductDescription] = useState<string>(description);
   const [productPrice, setProductPrice] = useState<number>(price);
-  const [productImage, setProductImage] = useState<string>(image || '');
+  const [productImage, setProductImage] = useState<string>(image);
   const [zoomImage, setZoomImage] = useState<boolean>(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
