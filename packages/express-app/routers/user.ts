@@ -1,6 +1,7 @@
-import { router, publicProcedure } from '../trpc';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
+
+import { router, publicProcedure } from '../trpc';
 import { getAll, getById } from '../dataAccess/user';
 
 export const userRouter = router({
@@ -8,7 +9,7 @@ export const userRouter = router({
     .input(
       z.object({
         id: z.number(),
-      })
+      }),
     )
     .query(async ({ input }) => {
       const { id } = input;

@@ -27,7 +27,7 @@ const ProductItem = ({
   const [sellerName, setSellerName] = useState<string>('');
 
   useEffect(() => {
-    setSellerName(owner.name);
+    setSellerName(owner?.name || '');
   }, []);
 
   return (
@@ -56,7 +56,7 @@ const ProductItem = ({
           <span className="product-item__price">
             $ {price}
           </span>
-          <span className="product-item__date">{format(new Date(createdAt), 'MM/dd/yyyy')}</span>
+          <span className="product-item__date">{format(new Date(createdAt || ''), 'dd/MM/yyyy')}</span>
         </div>
         <div className="product-item__divider" />
         <div className="product-item__seller-container">

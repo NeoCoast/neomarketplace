@@ -5,39 +5,38 @@ import UserContext from 'context';
 
 import TitleImage from 'assets/title-banner.png';
 import ProductList from 'components/ProductList';
+import trpc from 'utils/trpc';
 
-import { products } from 'data/mockedData';
 import { ProductType } from 'types/product';
 
 import './styles.scss';
 
 const MyListing = () => {
+  const [productsList, setProductList] = useState([] as ProductType[]);
   const { selectedUser } = useContext(UserContext);
 
-  const [loadingItems, setLoadingItems] = useState(true);
-  const [items, setItems] = useState<ProductType[]>([]);
+  const getProducts = trpc.product.getMyListing.useQuery({
+    userId: selectedUser?.id || 0,
+  });
 
   useEffect(() => {
-    try {
-      setItems(products.filter(({ owner }) => owner.id === selectedUser.id));
-    } finally {
-      setTimeout(() => {
-        setLoadingItems(false);
-      }, 2000); // ToDo.
+    if (getProducts.isSuccess && getProducts.data) {
+      setProductList(getProducts.data);
+    } else if (getProducts.isError) {
+      setProductList([]);
     }
-  }, [products, selectedUser]);
+  }, [getProducts.isSuccess, getProducts.data, getProducts.isError]);
 
-  if (loadingItems) {
+  if (getProducts.isLoading && !getProducts.isError) {
     return (
       <ClipLoader
         className="App__loader"
         size={70}
-        loading={loadingItems}
+        loading
         color="#2C3A61"
       />
     );
   }
-
   return (
     <div className="my-listing">
       <div>
@@ -46,7 +45,7 @@ const MyListing = () => {
           <span className="my-listing__title">My Listing</span>
         </div>
 
-        <ProductList products={items} />
+        <ProductList products={productsList} />
       </div>
     </div>
   );

@@ -31,6 +31,11 @@
     color: $white;
     background-color: $disabled;
     cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+      box-shadow: 3px 3px 7px $shadow;
+    }
   }
 
   &___text {

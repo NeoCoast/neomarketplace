@@ -7,6 +7,7 @@ import {
   getAllMyPurchased,
   getById,
   updateProduct,
+  getMyListing,
 } from '../dataAccess/product';
 
 import { router, publicProcedure } from '../trpc';
@@ -28,6 +29,7 @@ export const productRouter = router({
           message: `No product with id '${id}'`,
         });
       }
+
       return product;
     }),
   getAll: publicProcedure
@@ -54,7 +56,7 @@ export const productRouter = router({
       z.object({
         name: z.string(),
         description: z.string(),
-        image: z.string().optional(),
+        image: z.string(),
         price: z.number(),
       }),
     )
@@ -114,5 +116,51 @@ export const productRouter = router({
       }
 
       return products;
+    }),
+  getMyListing: publicProcedure
+    .input(
+      z.object({
+        userId: z.number(),
+      }),
+    )
+    .query(async ({ input: { userId } }) => {
+      const products = await getMyListing(userId);
+
+      if (!products.length) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: 'No products found',
+        });
+      }
+
+      return products;
+    }),
+  editProduct: publicProcedure
+    .input(
+      z.object({
+        productId: z.number(),
+        newProductData: z.object({
+          description: z.string(),
+          name: z.string(),
+          image: z.string(),
+          price: z.number(),
+        }),
+      }),
+    )
+    .mutation(async ({ input: { productId, newProductData } }) => {
+      let product = await getById(productId);
+
+      if (!product) {
+        throw new TRPCError({
+          code: 'NOT_FOUND',
+          message: `No product with id '${productId}'`,
+        });
+      }
+
+      product = { ...product, ...newProductData };
+
+      const { owner, buyer, ...updatedProduct } = product;
+
+      return updateProduct(productId, updatedProduct);
     }),
 });

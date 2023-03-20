@@ -6,29 +6,50 @@ import ProductForm from 'components/ProductForm';
 import EmptyState from 'components/EmptyState';
 
 import { ProductType } from 'types/product';
-import { products } from 'data/mockedData';
+
+import trpc from 'utils/trpc';
 
 import './styles.scss';
 
 const EditProduct = () => {
-  const [product, setProduct] = useState<ProductType | null>();
-  const [isLoading, setIsLoading] = useState(true);
-
-  const { id: itemId } = useParams();
   const navigate = useNavigate();
+  const { id: itemId } = useParams();
 
-  const handleSuccess = () => {
-    navigate('/');
-  };
+  const getProduct = trpc.product.byId.useQuery({ id: Number(itemId) });
+  const editProduct = trpc.product.editProduct.useMutation();
+
+  const [product, setProduct] = useState<ProductType | null>();
+  const [isLoadingProduct, setIsLoadingProduct] = useState(true);
+  const [isLoadingEdit, setIsLoadingEdit] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    setTimeout(() => { // TO DO: real backend request and add error handling
-      setProduct(products.find(({ id }) => id === Number(itemId)) || null);
-      setIsLoading(false);
-    }, 1000);
-  }, [itemId]);
+    if (editProduct.isSuccess) {
+      navigate('/');
+    } else if (editProduct.isError) {
+      setError('Error editing product.');
+    }
 
-  if (isLoading) {
+    setIsLoadingEdit(editProduct.isLoading);
+  }, [editProduct.isSuccess, editProduct.isError]);
+
+  useEffect(() => {
+    if (getProduct.data) {
+      const {
+        image,
+        ...rest
+      } = getProduct.data;
+
+      setProduct({
+        image: image || '',
+        ...rest,
+      });
+
+      setIsLoadingProduct(false);
+    }
+  }, [getProduct.data]);
+
+  if (isLoadingProduct) {
     return (
       <ClipLoader
         className="App__loader"
@@ -47,8 +68,13 @@ const EditProduct = () => {
 
   return (
     <ProductForm
-      handleSave={handleSuccess}
+      handleSave={(newProductData: ProductType & { image: string }) => {
+        setIsLoadingEdit(true);
+        editProduct.mutate({ newProductData, productId: Number(product.id) });
+      }}
       product={product}
+      error={error}
+      isLoading={isLoadingEdit}
       isEdit
     />
   );
