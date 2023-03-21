@@ -4,7 +4,6 @@ import { format } from 'date-fns';
 
 import MessagesIcon from 'assets/Msgs.svg';
 import routes from 'constants/routes';
-import { defaultAvatar } from 'data/mockedData';
 import { ProductType } from 'types/product';
 
 import StatusTag from 'components/StatusTag';
@@ -62,7 +61,7 @@ const ProductItem = ({
         <div className="product-item__seller-container">
           <div className="product-item__avatar-container">
             <img
-              src={defaultAvatar} // TODO: add avatar
+              src={`data:image/jpeg;base64,${owner?.avatar}`}
               alt="User Avatar"
               className="product-item__avatar"
             />

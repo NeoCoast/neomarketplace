@@ -11,7 +11,6 @@ import {
 import ClipLoader from 'react-spinners/ClipLoader';
 import { format } from 'date-fns';
 
-import { defaultAvatar } from 'data/mockedData';
 import routes from 'constants/routes';
 import trpc from 'utils/trpc';
 import EditIcon from 'assets/EditIcon.svg';
@@ -99,7 +98,10 @@ const ItemView = () => {
             <img src={`data:image/jpeg;base64,${item.image}`} alt="Item" />
             <div className="item-box__content-info">
               <div className="item-box__content-seller">
-                <img src={defaultAvatar} alt="Seller Avatar" /> {/* ToDo: Add seller avatar */}
+                <img
+                  src={`data:image/jpeg;base64,${item.owner.avatar}`}
+                  alt="Seller Avatar"
+                />
                 <p className="item-box__content-seller-name">{item.owner.name}</p>
               </div>
               <div className="item-box__content-main">
