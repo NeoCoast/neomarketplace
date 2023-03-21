@@ -32,25 +32,18 @@ export const productRouter = router({
 
       return product;
     }),
-  getAll: publicProcedure
-    .input(
-      z.object({
-        name: z.string().optional(),
-      }),
-    )
-    .query(async ({ input }) => {
-      const { name } = input;
-      const products = await getAll(name);
+  getAll: publicProcedure.query(async () => {
+    const products = await getAll();
 
-      if (!products.length) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'No products found',
-        });
-      }
+    if (!products.length) {
+      throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: 'No products found',
+      });
+    }
 
-      return products;
-    }),
+    return products;
+  }),
   createProduct: publicProcedure
     .input(
       z.object({

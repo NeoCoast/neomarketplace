@@ -1,5 +1,4 @@
 import React, {
-  useEffect,
   useState,
   useContext,
 } from 'react';
@@ -10,36 +9,34 @@ import ProductForm from 'components/ProductForm';
 import UserContext from 'context';
 import trpc from 'utils/trpc';
 
-import { ProductType } from 'types/product';
-
 import './styles.scss';
 
 const NewProduct = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
-  const mutation = trpc.product.createProduct.useMutation();
+  const createProduct = trpc.product.createProduct.useMutation();
 
   const { selectedUser } = useContext(UserContext);
 
-  useEffect(() => {
-    if (mutation.isSuccess) {
-      navigate('/');
-    } else if (mutation.isError) {
-      setError('Error creating product.');
-    }
+  if (createProduct.isSuccess) {
+    navigate('/');
+  }
+
+  if (createProduct.isError) {
+    setError('Error creating product.');
 
     setIsLoading(false);
-  }, [mutation]);
+  }
 
   return (
     <ProductForm
       error={error}
       isLoading={isLoading}
-      handleSave={(product: ProductType) => {
+      handleSave={(product) => {
         setIsLoading(true);
-        mutation.mutate({ newProduct: product, ownerId: selectedUser.id || 1 });
+        createProduct.mutate({ newProduct: product, ownerId: selectedUser.id || 1 });
       }}
     />
   );
