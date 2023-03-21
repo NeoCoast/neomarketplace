@@ -22,9 +22,10 @@
     "jsx": "react-jsx",
     "downlevelIteration": true,
     "paths": {
-      "@server/*" : ["../../express-app/*"],
+      "@server/*": [
+        "../../server/src/*"
+      ],
     }
-
   },
   "include": [
     "src",

@@ -1,4 +1,4 @@
-import { Prisma, PrismaClient, User } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
@@ -10,4 +10,4 @@ export const getById = async (id: number) => {
   return user;
 };
 
-export const getAll = async () => await prisma.user.findMany();
+export const getAll = () => prisma.user.findMany();
