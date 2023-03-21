@@ -54,17 +54,19 @@ export const productRouter = router({
   createProduct: publicProcedure
     .input(
       z.object({
-        name: z.string(),
-        description: z.string(),
-        image: z.string(),
-        price: z.number(),
+        newProduct: z.object({
+          name: z.string(),
+          description: z.string(),
+          image: z.string(),
+          price: z.number(),
+        }),
+        ownerId: z.number(),
       }),
     )
     .mutation((req) => {
-      const owner = 1; // Only 1 seller user
       const product = createProduct({
-        product: req.input,
-        owner,
+        product: req.input.newProduct,
+        owner: req.input.ownerId,
       });
       return product;
     }),
