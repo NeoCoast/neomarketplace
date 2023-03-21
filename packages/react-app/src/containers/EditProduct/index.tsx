@@ -35,15 +35,7 @@ const EditProduct = () => {
 
   useEffect(() => {
     if (getProduct.data) {
-      const {
-        image,
-        ...rest
-      } = getProduct.data;
-
-      setProduct({
-        image: image || '',
-        ...rest,
-      });
+      setProduct(getProduct.data);
 
       setIsLoadingProduct(false);
     }

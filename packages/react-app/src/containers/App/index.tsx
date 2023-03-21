@@ -8,7 +8,14 @@ import trpc from 'utils/trpc';
 type AppProps = { children : ReactNode }
 
 const App = ({ children } : AppProps) => {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(() => new QueryClient({
+    defaultOptions: {
+      queries: {
+        retry: false,
+      },
+    },
+  }));
+
   const [trpcClient] = useState(() => trpc.createClient({
     links: [
       httpBatchLink({

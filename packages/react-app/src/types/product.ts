@@ -4,7 +4,7 @@ export type ProductType = {
   id?: number,
   description: string,
   name: string,
-  image: string | null,
+  image: string,
   price: number,
   createdAt?: string,
   owner?: UserType,
