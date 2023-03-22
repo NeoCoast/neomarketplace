@@ -1,4 +1,4 @@
-### Express App
+## Server App
 
 ### Start server
 
@@ -11,3 +11,17 @@
 ### Apply migration
 
 >`yarn migrate`
+
+### Delete data and tables from the database
+
+>`yarn clean`
+
+### Delete data, database, migrate, and seed all
+
+>`yarn reset`
+
+##### It excecutes the following steps in just one command
+
+- yarn clean
+- yarn migrate
+- yarn seed
