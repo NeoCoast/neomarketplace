@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate, generatePath, useLocation } from 'react-router-dom';
 import { format } from 'date-fns';
 
 import MessagesIcon from 'assets/Msgs.svg';
 import routes from 'constants/routes';
-import { ProductType } from 'types/product';
-
 import StatusTag from 'components/StatusTag';
+
+import { ProductType } from 'types/product';
 
 import './styles.scss';
 
@@ -22,12 +22,6 @@ const ProductItem = ({
 } : ProductType) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-
-  const [sellerName, setSellerName] = useState<string>('');
-
-  useEffect(() => {
-    setSellerName(owner?.name || '');
-  }, []);
 
   return (
     <button
@@ -65,7 +59,7 @@ const ProductItem = ({
               alt="User Avatar"
               className="product-item__avatar"
             />
-            <span className="product-item__seller-name">{sellerName}</span>
+            <span className="product-item__seller-name">{owner?.name || ''}</span>
           </div>
           <div className="product-item__divider" />
           <div className="product-item__msgs-container">

@@ -32,39 +32,34 @@ export const productRouter = router({
 
       return product;
     }),
-  getAll: publicProcedure
-    .input(
-      z.object({
-        name: z.string().optional(),
-      }),
-    )
-    .query(async ({ input }) => {
-      const { name } = input;
-      const products = await getAll(name);
+  getAll: publicProcedure.query(async () => {
+    const products = await getAll();
 
-      if (!products.length) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'No products found',
-        });
-      }
+    if (!products.length) {
+      throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: 'No products found',
+      });
+    }
 
-      return products;
-    }),
+    return products;
+  }),
   createProduct: publicProcedure
     .input(
       z.object({
-        name: z.string(),
-        description: z.string(),
-        image: z.string(),
-        price: z.number(),
+        newProduct: z.object({
+          name: z.string(),
+          description: z.string(),
+          image: z.string(),
+          price: z.number(),
+        }),
+        ownerId: z.number(),
       }),
     )
     .mutation((req) => {
-      const owner = 1; // Only 1 seller user
       const product = createProduct({
-        product: req.input,
-        owner,
+        product: req.input.newProduct,
+        owner: req.input.ownerId,
       });
       return product;
     }),

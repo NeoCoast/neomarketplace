@@ -13,6 +13,8 @@ import { format } from 'date-fns';
 
 import routes from 'constants/routes';
 import trpc from 'utils/trpc';
+import UserContext from 'context';
+
 import EditIcon from 'assets/EditIcon.svg';
 import CartIcon from 'assets/CartIcon.svg';
 
@@ -20,19 +22,18 @@ import CustomButton from 'components/CustomButton';
 import StatusTag from 'components/StatusTag';
 import EmptyState from 'components/EmptyState';
 
-import UserContext from 'context';
-
 import './styles.scss';
 
 const ItemView = () => {
   const { id: itemId } = useParams();
-  const { selectedUser } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const { selectedUser } = useContext(UserContext);
 
   const [error, setError] = useState('');
 
   const productData = trpc.product.byId.useQuery({ id: Number(itemId) });
-  const mutation = trpc.product.buyProduct.useMutation();
+  const buyProduct = trpc.product.buyProduct.useMutation();
 
   const item = productData.data;
 
@@ -52,14 +53,16 @@ const ItemView = () => {
     );
   }
 
-  if (productData.error) {
+  if (productData.isError) {
     setError('Item not found');
   }
 
-  if (mutation.isSuccess) {
+  if (buyProduct.isSuccess) {
     navigate('/my-purchased');
-  } else if (mutation.isError) {
-    setError(mutation.error?.message || 'Something went wrong');
+  }
+
+  if (buyProduct.isError) {
+    setError(buyProduct.error?.message || 'Something went wrong while purchasing the item.');
   }
 
   const creationDate = format(new Date(item?.createdAt || ''), 'eee dd MMM yyyy');
@@ -85,9 +88,9 @@ const ItemView = () => {
                   if (isOwner) {
                     navigate(itemPath);
                   } else {
-                    mutation.mutate({
+                    buyProduct.mutate({
                       productId: Number(itemId),
-                      buyerId: selectedUser?.id ?? 0,
+                      buyerId: selectedUser?.id || 1,
                     });
                   }
                 }}

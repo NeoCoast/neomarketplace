@@ -1,4 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import React, {
+  useMemo,
+  useState,
+  FormEvent,
+  ChangeEvent,
+} from 'react';
 import cn from 'classnames';
 
 import { ProductType } from 'types/product';
@@ -13,7 +18,7 @@ type ProductFormType = {
   isEdit?: boolean,
   error: string,
   isLoading: boolean,
-  handleSave: (product: ProductType & {image: string}) => void,
+  handleSave: (product: ProductType) => void,
 }
 
 const ProductForm = ({
@@ -36,7 +41,7 @@ const ProductForm = ({
   const [productImage, setProductImage] = useState<string>(image);
   const [zoomImage, setZoomImage] = useState<boolean>(false);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const currentProduct = {
@@ -57,12 +62,12 @@ const ProductForm = ({
       resolve(fileReader.result);
     };
 
-    fileReader.onerror = (error) => {
-      reject(error);
+    fileReader.onerror = (uploadError) => {
+      reject(uploadError);
     };
   });
 
-  const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = async (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files?.length) {
       const file = event.target.files[0];
       const b64File = await convertBase64(file);

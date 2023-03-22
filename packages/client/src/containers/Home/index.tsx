@@ -3,20 +3,14 @@ import ClipLoader from 'react-spinners/ClipLoader';
 
 import ProductList from 'components/ProductList';
 
-import { ProductType } from 'types/product';
-
 import trpc from 'utils/trpc';
 
 import './styles.scss';
 
 const Home = () => {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const name = urlParams.get('name');
+  const products = trpc.product.getAll.useQuery();
 
-  const products = trpc.product.getAll.useQuery({ name: name || '' });
-
-  if (products.isLoading) {
+  if (products.isLoading && !products.isError) {
     return (
       <ClipLoader
         className="App__loader"
@@ -27,17 +21,9 @@ const Home = () => {
     );
   }
 
-  if (!products) {
-    return (
-      <div>
-        No products available.
-      </div>
-    );
-  }
-
   return (
     <div className="App">
-      <ProductList products={products.data as ProductType[]} />
+      <ProductList products={products.data || []} />
     </div>
   );
 };
