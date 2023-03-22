@@ -8,7 +8,7 @@
     "seed": "npx prisma db seed",
     "migrate": "prisma migrate dev",
     "lint": "eslint  .",
-    "clean": "node clean.js",
+    "clean": "node src/clean.js",
     "reset": "yarn clean && yarn migrate && yarn seed"
   },
   "dependencies": {

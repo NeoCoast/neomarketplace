@@ -14,7 +14,6 @@ const ProductItem = ({
   id: productId,
   name,
   image,
-  msgsCount,
   price,
   createdAt,
   owner,
@@ -67,7 +66,6 @@ const ProductItem = ({
               src={MessagesIcon}
               alt="Messages inbox"
             />
-            <span className="product-item__msgs-count">{msgsCount}</span>
           </div>
         </div>
       </div>

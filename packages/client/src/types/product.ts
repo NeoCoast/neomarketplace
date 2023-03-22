@@ -9,5 +9,4 @@ export type ProductType = {
   createdAt?: string,
   owner?: UserType,
   buyer?: UserType | null,
-  msgsCount?: number,
 };
