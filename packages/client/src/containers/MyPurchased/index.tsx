@@ -1,31 +1,18 @@
 import React, { useContext } from 'react';
-import ClipLoader from 'react-spinners/ClipLoader';
 
 import UserContext from 'context';
 
 import TitleImage from 'assets/title-banner.png';
 import ProductList from 'components/ProductList';
-import trpc from 'utils/trpc';
+
+import { products } from 'data/mockedData';
 
 import './styles.scss';
 
 const MyPurchased = () => {
   const { selectedUser } = useContext(UserContext);
 
-  const getProducts = trpc.product.getMyPurchasedProducts.useQuery({
-    buyerId: selectedUser?.id || 0,
-  });
-
-  if (getProducts.isLoading && !getProducts.isError) {
-    return (
-      <ClipLoader
-        className="App__loader"
-        size={70}
-        loading
-        color="#2C3A61"
-      />
-    );
-  }
+  const productsList = products.filter((product) => product.buyer?.id === selectedUser?.id);
 
   return (
     <div className="my-purchased">
@@ -41,7 +28,7 @@ const MyPurchased = () => {
           </span>
         </div>
 
-        <ProductList products={getProducts.data || []} />
+        <ProductList products={productsList || []} />
       </div>
     </div>
   );

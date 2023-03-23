@@ -1,5 +1,4 @@
 import React, {
-  useState,
   useMemo,
   useContext,
 } from 'react';
@@ -30,10 +29,7 @@ const ItemView = () => {
 
   const { selectedUser } = useContext(UserContext);
 
-  const [error, setError] = useState('');
-
   const productData = trpc.product.byId.useQuery({ id: Number(itemId) });
-  const buyProduct = trpc.product.buyProduct.useMutation();
 
   const item = productData.data;
 
@@ -53,20 +49,12 @@ const ItemView = () => {
     );
   }
 
-  if (buyProduct.isSuccess) {
-    navigate('/my-purchased');
-  }
-
-  if (buyProduct.isError && !error) {
-    setError(buyProduct.error?.message || 'Something went wrong while purchasing the item.');
-  }
-
   const creationDate = item ? format(new Date(item.createdAt), 'eee dd MMM yyyy') : '';
 
   return (
     <div className="App">
-      {error || !item ? (
-        <EmptyState text={error || 'Item not found'} />
+      {!item ? (
+        <EmptyState text="Item not found" />
       ) : (
         <div className="item-box">
           <div className="item-box__title">
@@ -84,10 +72,7 @@ const ItemView = () => {
                   if (isOwner) {
                     navigate(itemPath);
                   } else {
-                    buyProduct.mutate({
-                      productId: Number(itemId),
-                      buyerId: selectedUser?.id || 1,
-                    });
+                    window.alert('This feature is not implemented yet!');
                   }
                 }}
               />
