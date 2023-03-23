@@ -28,7 +28,7 @@ const EditProduct = () => {
     navigate('/');
   }
 
-  if (editProduct.isError) {
+  if (editProduct.isError && !error) {
     setError('Error editing product.');
 
     setIsLoadingEdit(false);

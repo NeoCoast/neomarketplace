@@ -24,7 +24,7 @@ const NewProduct = () => {
     navigate('/');
   }
 
-  if (createProduct.isError) {
+  if (createProduct.isError && !error) {
     setError('Error creating product.');
 
     setIsLoading(false);

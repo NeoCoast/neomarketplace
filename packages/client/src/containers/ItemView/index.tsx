@@ -53,19 +53,15 @@ const ItemView = () => {
     );
   }
 
-  if (productData.isError) {
-    setError('Item not found');
-  }
-
   if (buyProduct.isSuccess) {
     navigate('/my-purchased');
   }
 
-  if (buyProduct.isError) {
+  if (buyProduct.isError && !error) {
     setError(buyProduct.error?.message || 'Something went wrong while purchasing the item.');
   }
 
-  const creationDate = format(new Date(item?.createdAt || ''), 'eee dd MMM yyyy');
+  const creationDate = item ? format(new Date(item.createdAt), 'eee dd MMM yyyy') : '';
 
   return (
     <div className="App">
