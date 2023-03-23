@@ -34,16 +34,6 @@ export const getAll = async (filter?: string) => {
   return products;
 };
 
-export const deleteProduct = async (id: number) => {
-  const product = await prisma.product.delete({
-    where: {
-      id,
-    },
-  });
-
-  return product;
-};
-
 export const createProduct = async ({
   product,
   owner,
