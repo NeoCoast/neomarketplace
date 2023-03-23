@@ -7,11 +7,9 @@ import {
   generatePath,
   useNavigate,
 } from 'react-router-dom';
-import ClipLoader from 'react-spinners/ClipLoader';
 import { format } from 'date-fns';
 
 import routes from 'constants/routes';
-import trpc from 'utils/trpc';
 import UserContext from 'context';
 
 import EditIcon from 'assets/EditIcon.svg';
@@ -21,6 +19,8 @@ import CustomButton from 'components/CustomButton';
 import StatusTag from 'components/StatusTag';
 import EmptyState from 'components/EmptyState';
 
+import { products } from 'data/mockedData';
+
 import './styles.scss';
 
 const ItemView = () => {
@@ -29,27 +29,15 @@ const ItemView = () => {
 
   const { selectedUser } = useContext(UserContext);
 
-  const productData = trpc.product.byId.useQuery({ id: Number(itemId) });
-
-  const item = productData.data;
+  const item = products.find((product) => product.id === Number(itemId));
 
   const isSold = useMemo(() => (typeof item?.buyer?.id === 'number'), [item?.buyer?.id]);
-  const isOwner = useMemo(() => item?.owner.id === selectedUser.id, [item?.owner, selectedUser.id]);
+  const isOwner = useMemo(
+    () => item?.owner?.id === selectedUser.id,
+    [item?.owner, selectedUser.id],
+  );
 
-  if (productData.isLoading) {
-    return (
-      <div>
-        <ClipLoader
-          className="App__loader"
-          size={70}
-          loading
-          color="#2C3A61"
-        />
-      </div>
-    );
-  }
-
-  const creationDate = item ? format(new Date(item.createdAt), 'eee dd MMM yyyy') : '';
+  const creationDate = item?.createdAt ? format(new Date(item.createdAt), 'eee dd MMM yyyy') : '';
 
   return (
     <div className="App">
@@ -83,10 +71,10 @@ const ItemView = () => {
             <div className="item-box__content-info">
               <div className="item-box__content-seller">
                 <img
-                  src={`data:image/jpeg;base64,${item.owner.avatar}`}
+                  src={`data:image/jpeg;base64,${item?.owner?.avatar}`}
                   alt="Seller Avatar"
                 />
-                <p className="item-box__content-seller-name">{item.owner.name}</p>
+                <p className="item-box__content-seller-name">{item?.owner?.name}</p>
               </div>
               <div className="item-box__content-main">
                 <p className="item-box__content-title">{item.name}</p>
