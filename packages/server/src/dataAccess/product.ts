@@ -23,7 +23,6 @@ export const getAll = async (filter?: string) => {
         contains: filter,
         mode: 'insensitive',
       },
-      status: 'Active',
     },
     include: {
       owner: true,
