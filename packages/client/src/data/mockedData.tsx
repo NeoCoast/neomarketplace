@@ -27,7 +27,7 @@ export const users = [
 export const products = [
   {
     name: 'Play Station 5',
-    id: 0,
+    id: 1,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 433.3,
     description: 'Play Station 5 is the best console ever made by Sony and it is the best console ever made in the world. Digital edition, 1024 GB, 4K, 120 FPS, 8K, 8K HDR, 8K 120 FPS. It is the best console ever made in the world.',
@@ -36,7 +36,7 @@ export const products = [
   },
   {
     name: 'Iphone 12',
-    id: 1,
+    id: 2,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 433.3,
     description: 'Iphone 12 1024 gb silver',
@@ -45,7 +45,7 @@ export const products = [
   },
   {
     name: 'Oculus Quest 2',
-    id: 2,
+    id: 3,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 1230.3,
     description: 'Oculus Quest 2 is our most advanced all-in-one VR system yet. Every aspect of the Quest 2 has been engineered for maximum performance, including optics, hardware, software, and comfort. No PC or console required. Just set up the Quest 2 with the Oculus app, and you’re free to explore VR from almost anywhere.',
@@ -54,7 +54,7 @@ export const products = [
   },
   {
     name: 'Xbox Series X',
-    id: 3,
+    id: 4,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 820.3,
     description: 'The Xbox Series X is the most powerful console ever made. It is the fastest, most powerful Xbox ever, powered by the Xbox Velocity Architecture, which includes a custom SSD, integrated I/O that dramatically reduces latency, and a processing system that enables software developers to tap into the raw power of the hardware.',
@@ -63,7 +63,7 @@ export const products = [
   },
   {
     name: 'Macbook Pro 16"',
-    id: 4,
+    id: 5,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 2331.3,
     description: 'Macbook Pro 16" 2019 1TB SSD 16GB RAM 2.6GHz 6-Core Intel Core i7 9th Gen Intel Iris Plus Graphics 655 Touch Bar and Touch ID Space Gray 16" Retina Display 3072 x 1920. Is in perfect condition, no scratches or dents. Comes with original box and charger. Also comes with a case and a screen protector. I have the original receipt from when I bought it in 2019. I am selling because I am upgrading to the new Macbook Pro 16".',
@@ -72,7 +72,7 @@ export const products = [
   },
   {
     name: 'Iphone 14 Pro',
-    id: 5,
+    id: 6,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 987,
     description: 'Ipone 14 Pro 256GB 5G 6.1" 12MP 4GB RAM iOS 14. Is a smartphone designed, developed, and marketed by Apple Inc. It is the thirteenth generation of the iPhone. The iPhone 14 Pro is part of the iPhone 14 Pro series, which also includes the iPhone 14 Pro Max.',
@@ -81,7 +81,7 @@ export const products = [
   },
   {
     name: 'TV Samsung 55"',
-    id: 6,
+    id: 7,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 543,
     description: 'Television Samsung 55" 4K, 3 HDMI, 2 USB. Incluye soporte para pared y control remoto. Aceptamos tarjetas de crédito y débito.',
@@ -90,7 +90,7 @@ export const products = [
   },
   {
     name: 'Samsung Monitor 24"',
-    id: 7,
+    id: 8,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 223,
     description: 'Monitor Samsung 24" Full HD. 1 año de uso. Excelente estado. Incluye cable HDMI. Se retira por Villa Crespo. No hago envíos. No permuto. No acepto canjes, solo efectivo.',
@@ -100,7 +100,7 @@ export const products = [
   },
   {
     name: 'Airpods Pro',
-    id: 8,
+    id: 9,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 199,
     description: 'The new Airpods Pro, with active noise cancellation, transparency mode, and a customisable fit. The best Airpods yet.',
@@ -109,7 +109,7 @@ export const products = [
   },
   {
     name: 'Ps5 Joystick',
-    id: 9,
+    id: 10,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 99,
     description: 'Ps5 Joystick for sale at a great price of $99 only, contact me if interested. Thanks for your time. White color, 1 year warranty.',
@@ -118,7 +118,7 @@ export const products = [
   },
   {
     name: 'JBL Speaker',
-    id: 10,
+    id: 11,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 76,
     description: 'A JBL speaker, 100% working condition and great sound quality with bass boost and treble boost features. Comes with a charger and a cable.',
@@ -128,7 +128,7 @@ export const products = [
   },
   {
     name: 'Apple Airpods Max',
-    id: 11,
+    id: 12,
     createdAt: '2021-01-01T00:00:00.000Z',
     price: 544,
     description: 'Apple headphones, brand new in box with warranty and receipt from Apple Store in Puerto Madero (Buenos Aires). They are the latest model, with noise cancellation and lightning connector. They are the best headphones you can buy. Silver color with white interior. They are the best headphones you can buy. Silver color with white interior.',
