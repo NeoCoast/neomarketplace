@@ -18,13 +18,10 @@ app.use((req, res, next) => {
   next();
 });
 
-const createContext = () => ({}); // no context
-
 app.use(
   '/trpc',
   trpcExpress.createExpressMiddleware({
     router: appRouter,
-    createContext,
   }),
 );
 

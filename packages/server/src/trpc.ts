@@ -1,12 +1,6 @@
-import { inferAsyncReturnType, initTRPC } from '@trpc/server';
+import { initTRPC } from '@trpc/server';
 
-const createContext = () => ({
-  // ... your context here
-  // e.g. db connection, session, etc
-});
-type Context = inferAsyncReturnType<typeof createContext>;
-
-const t = initTRPC.context<Context>().create();
+const t = initTRPC.context().create();
 
 export const { router } = t;
 
