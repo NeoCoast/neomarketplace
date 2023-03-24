@@ -1,1 +1,1 @@
-yarn i @tanstack/react-query @trpc/client @trpc/react-query @trpc/server
+yarn add @tanstack/react-query @trpc/client @trpc/react-query @trpc/server
