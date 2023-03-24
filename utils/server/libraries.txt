@@ -1,1 +1,1 @@
-yarn i @trpc/server zod
+yarn add @trpc/server@10.12.0 zod@^3.20.2
