@@ -7,13 +7,14 @@ import {
   Route,
   BrowserRouter,
 } from 'react-router-dom';
-import { ClipLoader } from 'react-spinners';
+// import { ClipLoader } from 'react-spinners';
 
 import { UserType } from 'types/user';
 
 import UserContext from 'context';
 
 import routes from 'constants/routes';
+import { users } from 'data/mockedData';
 
 import Home from 'containers/Home';
 import MyPurchased from 'containers/MyPurchased';
@@ -24,49 +25,17 @@ import ItemView from 'containers/ItemView';
 import NotFound from 'containers/NotFound';
 import EditProduct from 'containers/EditProduct';
 
-import trpc from 'utils/trpc';
+// import trpc from 'utils/trpc';
 
 import './index.scss';
 
 const Router = () => {
-  const [selectedUser, setSelectedUser] = useState({
-    avatar: '',
-    id: null,
-    name: '',
-  } as UserType);
-
-  const usersData = trpc.user.getAll.useQuery();
+  const [selectedUser, setSelectedUser] = useState(users[2] as UserType);
 
   const contextValue = useMemo(
-    () => ({ selectedUser, setSelectedUser, usersList: usersData.isSuccess ? usersData.data : [] }),
-    [selectedUser, usersData.isSuccess],
+    () => ({ selectedUser, setSelectedUser, usersList: users }),
+    [selectedUser],
   );
-
-  if (usersData.isLoading) {
-    return (
-      <ClipLoader
-        className="App__loader"
-        size={70}
-        loading={usersData.isLoading}
-        color="#2C3A61"
-      />
-    );
-  }
-
-  if (usersData.isError) {
-    // TODO: mejorar error screen
-    return (
-      <div>
-        Error loading users.
-      </div>
-    );
-  }
-
-  if (usersData.isSuccess && !selectedUser.id) {
-    const user = usersData.data[0];
-
-    setSelectedUser(user);
-  }
 
   return (
     <BrowserRouter>

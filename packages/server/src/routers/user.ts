@@ -1,40 +1,11 @@
-import { TRPCError } from '@trpc/server';
-import { z } from 'zod';
+// import { TRPCError } from '@trpc/server';
+//import { router, publicProcedure } from '../trpc';
 
-import { router, publicProcedure } from '../trpc';
-import { getAll, getById } from '../dataAccess/user';
+// import { getAll } from '../dataAccess/user';
 
-export const userRouter = router({
-  byId: publicProcedure
-    .input(
-      z.object({
-        id: z.number(),
-      }),
-    )
-    .query(async ({ input }) => {
-      const { id } = input;
-      const user = await getById(id);
+export const userRouter = () => { }; // declare trpc router here;
 
-      if (!user) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: `No user with id '${id}'`,
-        });
-      }
+// export const userRouter = router({
+   // declare trpc router here;
+// })
 
-      return user;
-    }),
-  getAll: publicProcedure
-    .query(async () => {
-      const users = await getAll();
-
-      if (!users.length) {
-        throw new TRPCError({
-          code: 'NOT_FOUND',
-          message: 'No users found',
-        });
-      }
-
-      return users;
-    }),
-});

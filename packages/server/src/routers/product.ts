@@ -1,4 +1,10 @@
-import { router } from '../trpc';
+// import { TRPCError } from '@trpc/server';
+// import { z } from 'zod';
 
-export const productRouter = router({
-});
+//import { router, publicProcedure } from '../trpc';
+
+export const productRouter = () => { }; // declare trpc router here;
+
+// export const productRouter = router({
+// ... });
+
