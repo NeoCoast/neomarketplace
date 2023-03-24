@@ -54,7 +54,6 @@ const Router = () => {
   }
 
   if (usersData.isError) {
-    // TODO: mejorar error screen
     return (
       <div>
         Error loading users.
